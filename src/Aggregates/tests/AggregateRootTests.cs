@@ -28,7 +28,7 @@ namespace MindMatrix.Aggregates.Tests
         {
             var id = AggregateId.GenerateId();
             var aggregate = new Aggregate<User>();
-            aggregate.Apply(new AggregateCreated() { Id = id });
+            aggregate.Events.Apply(new AggregateCreated() { Id = id });
 
             aggregate.Root.Id.ShouldBe(id);
         }
