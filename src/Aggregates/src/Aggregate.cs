@@ -1,21 +1,13 @@
 namespace MindMatrix.Aggregates
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     public interface IAggregate<T>
           where T : IAggregateRoot, new()
     {
         T Root { get; }
-        AggregateEventList<T> Events { get; }
-    }
+        IAggregateEventList<T> Events { get; }
 
-    public class Aggregate<T> : IAggregate<T>
-        where T : IAggregateRoot, new()
-    {
-        public T Root { get; }
-        public AggregateEventList<T> Events { get; }
-        public Aggregate()
-        {
-            Root = new T();
-            Events = new AggregateEventList<T>(this);
-        }
+        Task Handle<K>(K request, CancellationToken cancellationToken);
     }
 }

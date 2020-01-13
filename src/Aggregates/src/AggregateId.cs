@@ -3,24 +3,23 @@ namespace MindMatrix.Aggregates
     using System;
     using System.Collections.Generic;
 
-    public class AggregateId : ValueObject
+    public partial class AggregateId : ValueObject
     {
-
-        private readonly Guid _value;
-
         public AggregateId(Guid guid)
         {
-            _value = guid;
+            value_ = guid.ToString();
         }
 
         protected override IEnumerable<object> GetAtomicValues()
         {
-            yield return _value;
+            yield return value_;
         }
 
         public static AggregateId GenerateId() => new AggregateId(Guid.NewGuid());
 
-        public static implicit operator string(AggregateId it) => it._value.ToString();
+        public static implicit operator string(AggregateId it) => it.value_;
         public static explicit operator AggregateId(string it) => new AggregateId(Guid.Parse(it));
+
+        //public override string ToString() => $"AggregateId: {_value}";
     }
 }

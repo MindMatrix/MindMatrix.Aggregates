@@ -2,20 +2,25 @@ namespace MindMatrix.Aggregates
 {
     public interface IAggregateEvent
     {
-        AggregateEventId Id { get; }
-        AggregateEventSequence Sequence { get; }
+        void Apply();
     }
 
-    public class AggregateEvent : IAggregateEvent
+    public class AggregateEvent<T> : IAggregateEvent
+        where T : IAggregateRoot
     {
-        public AggregateEventId Id { get; }
+        private readonly T _aggregate;
+        private readonly IAggregateMutator<T> _mutation;
 
-        public AggregateEventSequence Sequence { get; }
-
-        public AggregateEvent(AggregateEventId id, AggregateEventSequence sequence)
+        public AggregateEvent(T aggregate, IAggregateMutator<T> mutation)
         {
-            Id = id;
-            Sequence = sequence;
+            _aggregate = aggregate;
+            _mutation = mutation;
+        }
+
+        public void Apply()
+        {
+            _mutation.Apply(_aggregate);
+            _aggregate.Version.Increment();
         }
     }
 }

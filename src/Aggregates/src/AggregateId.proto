@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "MindMatrix.Aggregates";
+
+message AggregateId {
+    string value = 1;
+}
