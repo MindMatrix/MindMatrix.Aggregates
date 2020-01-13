@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "MindMatrix.Aggregates";
+
+
+package AggregateService;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc Read (ReadAggregateRequest) returns (ReadAggregateResponse);
+}
+
+message RpcAggregateId {
+    string value = 1;
+}
+
+message RpcAggregateVersion {
+    int32 value = 1;
+}
+
+// The request message containing the user's name.
+message ReadAggregateRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message ReadAggregateResponse {
+  string message = 1;
+}

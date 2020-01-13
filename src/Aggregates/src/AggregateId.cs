@@ -5,6 +5,8 @@ namespace MindMatrix.Aggregates
 
     public partial class AggregateId : ValueObject
     {
+        private string value_;
+
         public AggregateId(Guid guid)
         {
             value_ = guid.ToString();

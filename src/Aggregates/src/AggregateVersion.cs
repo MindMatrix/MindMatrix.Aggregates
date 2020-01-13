@@ -5,6 +5,7 @@ namespace MindMatrix.Aggregates
 {
     public partial class AggregateVersion : ValueObject
     {
+        private int value_;
         public AggregateVersion(int version)
         {
             if (version < -1)
