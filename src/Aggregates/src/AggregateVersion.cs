@@ -5,8 +5,9 @@ namespace MindMatrix.Aggregates
 {
     public partial class AggregateVersion : ValueObject
     {
-        private int value_;
-        public AggregateVersion(int version)
+        private long value_;
+        public long Value => value_;
+        public AggregateVersion(long version)
         {
             if (version < -1)
                 throw new ArgumentOutOfRangeException(nameof(version));
@@ -16,7 +17,9 @@ namespace MindMatrix.Aggregates
 
         internal void Increment() => value_++;
 
-        public static implicit operator int(AggregateVersion it) => it.value_;
+        internal void Set(AggregateStreamEventVersion version) => value_ = version.value_;
+
+        public static implicit operator long(AggregateVersion it) => it.value_;
 
         protected override IEnumerable<object> GetAtomicValues()
         {

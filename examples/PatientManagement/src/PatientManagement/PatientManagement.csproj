@@ -3,9 +3,6 @@
   <!-- <ItemGroup>
     <Protobuf Include="..\Common\PatientService.proto" />
   </ItemGroup> -->
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Aggregates\src\Aggregates.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EventStore.Client" Version="5.0.5" />
@@ -16,6 +13,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="StructureMap" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Aggregates\src\Aggregates.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

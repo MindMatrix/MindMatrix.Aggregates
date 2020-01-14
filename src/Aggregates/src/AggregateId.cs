@@ -7,6 +7,8 @@ namespace MindMatrix.Aggregates
     {
         private string value_;
 
+        public string Value => value_;
+
         public AggregateId(Guid guid)
         {
             value_ = guid.ToString();

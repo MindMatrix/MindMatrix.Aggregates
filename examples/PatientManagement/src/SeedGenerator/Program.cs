@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
+using MindMatrix.Aggregates;
 
 namespace SeedGenerator
 {
@@ -8,10 +10,15 @@ namespace SeedGenerator
     {
         static readonly Random Random = new Random();
 
+
         public static async void Main(string[] args)
         {
             var listOfPatients = Patient.Generate(400);
 
+            var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            var client = new AggregateService.AggregateServiceClient(channel);
+
+            //client.Read
             var dispatcher = await SetupDispatcher();
 
             await AdmitPatients(listOfPatients, dispatcher);
