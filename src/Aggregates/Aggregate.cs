@@ -2,7 +2,7 @@ namespace MindMatrix.Aggregates
 {
     using System.Collections.Generic;
 
-    public class Aggregate<AggregateState> //: IAggregate<AggregateState>
+    public abstract class Aggregate<AggregateState> //: IAggregate<AggregateState>
         where AggregateState : new()
     {
         private readonly string _aggregateId;
@@ -19,12 +19,12 @@ namespace MindMatrix.Aggregates
         public bool Exists => CommittedVersion > -1;
         public bool HasChanges => CommittedVersion != Version;
 
-        public Aggregate(string aggregateId) : this(aggregateId, new AggregateState(), -1)
+        protected Aggregate(string aggregateId) : this(aggregateId, new AggregateState(), -1)
         {
 
         }
 
-        public Aggregate(string aggregateId, AggregateState state, long version)
+        protected Aggregate(string aggregateId, AggregateState state, long version)
         {
             _aggregateId = aggregateId;
             _baseVersion = version;
@@ -41,7 +41,7 @@ namespace MindMatrix.Aggregates
         public IReadOnlyList<IMutation<AggregateState>> CommittedEvents => _events;
         public IReadOnlyList<IMutation<AggregateState>> UncommittedEvents => _uncommittedEvents;
 
-        public void Commit()
+        protected void commit()
         {
             _events.AddRange(_uncommittedEvents);
             _uncommittedEvents.Clear();

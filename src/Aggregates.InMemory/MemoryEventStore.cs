@@ -4,10 +4,24 @@ namespace MindMatrix.Aggregates
     using System.Linq;
     using System.Threading.Tasks;
 
+
+    internal class InMemoryAggregate<AggregateState> : Aggregate<AggregateState>
+        where AggregateState : new()
+    {
+        internal InMemoryAggregate(string aggregateId) : this(aggregateId, new AggregateState(), -1)
+        {
+
+        }
+
+        internal InMemoryAggregate(string aggregateId, AggregateState state, long version) : base(aggregateId, state, version) { }
+
+        internal void Commit() => commit();
+    }
+
     public class InMemoryAggregateRepository<T> : IAggregateRepository<T>
         where T : new()
     {
-        private readonly Dictionary<string, Aggregate<T>> _aggregates = new Dictionary<string, Aggregate<T>>();
+        private readonly Dictionary<string, InMemoryAggregate<T>> _aggregates = new Dictionary<string, InMemoryAggregate<T>>();
 
         private Aggregate<T> GetOrCreateAggregate(string aggregateId)
         {
@@ -15,7 +29,7 @@ namespace MindMatrix.Aggregates
             {
                 if (!_aggregates.TryGetValue(aggregateId, out var aggregate))
                 {
-                    aggregate = new Aggregate<T>(aggregateId);
+                    aggregate = new InMemoryAggregate<T>(aggregateId);
                     _aggregates.Add(aggregateId, aggregate);
                 }
                 return aggregate;

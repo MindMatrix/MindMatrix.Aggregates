@@ -23,11 +23,11 @@ namespace MindMatrix.Aggregates
             }
         }
 
-        public void CanCreateAggregate()
+        public async Task CanCreateAggregate()
         {
             var aggregateId = System.Guid.NewGuid().ToString();
-            var state = new License();
-            var aggregate = new Aggregate<License>(aggregateId, state, -1);
+            var aggregates = new InMemoryAggregateRepository<License>();
+            var aggregate = await aggregates.Get(aggregateId);
 
             var createdOn = new DateTime(2000, 1, 1, 1, 1, 1, DateTimeKind.Utc);
             var expirseOn = createdOn.AddDays(365);
