@@ -27,10 +27,7 @@ namespace MindMatrix.Aggregates
         {
             var aggregateId = System.Guid.NewGuid().ToString();
             var state = new License();
-            var events = new EventList(aggregateId, -1);
-            var serializer = new NewtonsoftMutationSerializer<License>();
-            var resolver = new MutationTypeResolver(typeof(License).Assembly);
-            var aggregate = new Aggregate<License>(aggregateId, state, events, serializer, resolver);
+            var aggregate = new Aggregate<License>(aggregateId, state, -1);
 
             var createdOn = new DateTime(2000, 1, 1, 1, 1, 1, DateTimeKind.Utc);
             var expirseOn = createdOn.AddDays(365);
@@ -42,27 +39,20 @@ namespace MindMatrix.Aggregates
             aggregate.State.ExpiresOn.ShouldBe(expirseOn);
         }
 
-        public async Task AppliesStateOnLoad()
-        {
-            var aggregateId = System.Guid.NewGuid().ToString();
-            var state = new License();
-            var serializer = new NewtonsoftMutationSerializer<License>();
-            var resolver = new MutationTypeResolver(typeof(License).Assembly);
-            var mutationType = resolver.GetByType(typeof(LicenseCreated));
+        // public async Task AppliesStateOnLoad()
+        // {
+        //     var aggregateId = System.Guid.NewGuid().ToString();
+        //     var state = new License();
+        //     var createdOn = new DateTime(2000, 1, 1, 1, 1, 1, DateTimeKind.Utc);
+        //     var expirseOn = createdOn.AddDays(365);
+        //     var licenseEvent = new LicenseCreated() { Date = createdOn };
+        //     var eventStore = new InMemoryAggregateRepository<License>();
 
-            var createdOn = new DateTime(2000, 1, 1, 1, 1, 1, DateTimeKind.Utc);
-            var expirseOn = createdOn.AddDays(365);
-            var licenseEvent = new LicenseCreated() { Date = createdOn };
-            var eventStore = new MemoryEventStore();
-            await eventStore.AppendEvents(aggregateId, -1, new[] { new Event(0, mutationType.Name, serializer.Serialize(mutationType, licenseEvent)) });
-            var eventListFactory = new EventListFactory(eventStore);
-            var events = await eventListFactory.Create(aggregateId);
+        //     var aggregate = eventStore.Get(aggregateId);
 
-            var aggregate = new Aggregate<License>(aggregateId, state, events, serializer, resolver);
-
-            aggregate.Version.ShouldBe(0);
-            aggregate.CommittedVersion.ShouldBe(0);
-            aggregate.State.ExpiresOn.ShouldBe(expirseOn);
-        }
+        //     aggregate.Version.ShouldBe(0);
+        //     aggregate.CommittedVersion.ShouldBe(0);
+        //     aggregate.State.ExpiresOn.ShouldBe(expirseOn);
+        // }
     }
 }
