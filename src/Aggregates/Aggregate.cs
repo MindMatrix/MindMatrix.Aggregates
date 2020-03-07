@@ -1,6 +1,17 @@
 namespace MindMatrix.Aggregates
 {
-    public class Aggregate<T>
+    public interface IAggregate<T>
+    {
+        string AggregateId { get; }
+        T State { get; }
+        long Version { get; }
+        long CommittedVersion { get; }
+
+        void Apply<Mutation>(Mutation mutation)
+                    where Mutation : IMutation<T>;
+    }
+
+    public class Aggregate<T> : IAggregate<T>
     {
         private readonly string _aggregateId;
         private readonly T _state;
