@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Aggregates\Aggregates.csproj" />
     <ProjectReference Include="..\..\src\Aggregates.InMemory\Aggregates.InMemory.csproj" />
+    <ProjectReference Include="..\..\src\Aggregates\Aggregates.csproj" />
   </ItemGroup>
 
 </Project>

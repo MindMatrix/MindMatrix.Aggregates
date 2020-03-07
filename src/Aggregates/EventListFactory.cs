@@ -2,24 +2,25 @@ namespace MindMatrix.Aggregates
 {
     using System.Threading.Tasks;
 
-    public interface IEventListFactory
+    public interface IEventListFactory<Aggregate>
     {
-        Task<EventList> Create(string aggregateId, long version = -1);
+        Task<EventList<Aggregate>> Create(string aggregateId, long version = -1);
     }
 
-    public class EventListFactory : IEventListFactory
+    public class EventListFactory<Aggregate> : IEventListFactory<Aggregate>
     {
-        private readonly IEventStore _eventStore;
+        private readonly IMutationTypeResolver<Aggregate> _resolver;
+        private readonly IEventStore<Aggregate> _eventStore;
 
-        public EventListFactory(IEventStore eventStore)
+        public EventListFactory(IMutationTypeResolver<Aggregate> resolver, IEventStore<Aggregate> eventStore)
         {
             _eventStore = eventStore;
         }
 
-        public async Task<EventList> Create(string aggregateId, long version = -1)
+        public async Task<EventList<Aggregate>> Create(string aggregateId, long version = -1)
         {
             var events = await _eventStore.GetEvents(aggregateId, version).ToListAsync();
-            var eventList = new EventList(aggregateId, version);
+            var eventList = new EventList<Aggregate>(_resolver, aggregateId, version);
             foreach (var it in events)
                 eventList.AppendCommitted(it);
 

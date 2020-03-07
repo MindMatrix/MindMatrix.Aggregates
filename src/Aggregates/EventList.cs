@@ -2,36 +2,39 @@ namespace MindMatrix.Aggregates
 {
     using System.Collections.Generic;
 
-    public class EventList
+    public class EventList<Aggregate>
     {
-        private readonly List<Event> _events = new List<Event>();
-        private readonly List<Event> _uncommittedEvents = new List<Event>();
+        private readonly IMutationTypeResolver<Aggregate> _resolver;
+        private readonly List<IEvent<Aggregate>> _events = new List<IEvent<Aggregate>>();
+        private readonly List<IEvent<Aggregate>> _uncommittedEvents = new List<IEvent<Aggregate>>();
         private readonly string _aggregateId;
         private long _baseVersion;
         public long CommittedVersion => _baseVersion + _events.Count;
         public long Version => CommittedVersion + _uncommittedEvents.Count;
 
-        public EventList(string aggregateId, long baseVersion)
+        public EventList(IMutationTypeResolver<Aggregate> resolver, string aggregateId, long baseVersion)
         {
+            _resolver = resolver;
             _aggregateId = aggregateId;
             _baseVersion = baseVersion;
         }
 
-        internal void AppendCommitted(Event ev)
+        internal void AppendCommitted(IEvent<Aggregate> ev)
         {
             _events.Add(ev);
         }
 
-        public Event Append(string type, string data)
+        public IEvent<Aggregate> Append<Mutation>(Mutation mutation)
+            where Mutation : IMutation<Aggregate>
         {
-            var ev = new Event(Version + 1, type, data);
+            var mutationType = _resolver.GetByType(typeof(Mutation));
+            var ev = new Event<Aggregate>(Version + 1, mutationType.Name, mutation);
             _uncommittedEvents.Add(ev);
             return ev;
         }
 
-
-        public IReadOnlyList<Event> CommittedEvents => _events;
-        public IReadOnlyList<Event> UncommittedEvents => _uncommittedEvents;
+        public IReadOnlyList<IEvent<Aggregate>> CommittedEvents => _events;
+        public IReadOnlyList<IEvent<Aggregate>> UncommittedEvents => _uncommittedEvents;
 
         public void Commit()
         {

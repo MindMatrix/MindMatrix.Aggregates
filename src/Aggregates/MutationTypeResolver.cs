@@ -17,13 +17,13 @@ namespace MindMatrix.Aggregates
         }
     }
 
-    public interface IMutationTypeResolver
+    public interface IMutationTypeResolver<Aggregate>
     {
         MutationType GetByName(string mutationType);
         MutationType GetByType(Type type);
     }
 
-    public class MutationTypeResolver : IMutationTypeResolver
+    public class MutationTypeResolver<Aggregate> : IMutationTypeResolver<Aggregate>
     {
         private readonly Dictionary<string, MutationType> _named = new Dictionary<string, MutationType>();
         private readonly Dictionary<Type, MutationType> _types = new Dictionary<Type, MutationType>();
@@ -31,7 +31,7 @@ namespace MindMatrix.Aggregates
         public MutationTypeResolver(Assembly assembly)
         {
             var types = from x in assembly.GetExportedTypes()
-                        where x.IsConcerteImpl(typeof(IMutation<>))
+                        where x.IsConcerteImpl(typeof(IMutation<Aggregate>))
                         select x;
 
             foreach (var it in types)
