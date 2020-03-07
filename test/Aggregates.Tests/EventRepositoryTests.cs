@@ -15,7 +15,7 @@ namespace MindMatrix.Aggregates
                 new Event( 1, "Deleted", $"Guid: {aggregateId}")
             };
 
-            var result = await eventStore.AppendEvents(aggregateId, 0, events);
+            var result = await eventStore.AppendEvents(aggregateId, -1, events);
             var eventResults = await eventStore.GetEvents(aggregateId).ToListAsync();
 
             result.ShouldBe(true);
@@ -32,7 +32,7 @@ namespace MindMatrix.Aggregates
                 new Event( 2, "Deleted", $"Guid: {aggregateId}"),
             };
 
-            var result = await eventStore.AppendEvents(aggregateId, 0, events);
+            var result = await eventStore.AppendEvents(aggregateId, -1, events);
             var eventResults = await eventStore.GetEvents(aggregateId, 0).ToListAsync();
 
             result.ShouldBe(true);
@@ -48,11 +48,11 @@ namespace MindMatrix.Aggregates
                 new Event( 1, "Deleted", $"Guid: {aggregateId}")
             };
 
-            await eventStore.AppendEvents(aggregateId, 0, events);
+            await eventStore.AppendEvents(aggregateId, -1, events);
             (await eventStore.AppendEvents(aggregateId, 0, new[] { new Event(0, "Created", $"Guid: {aggregateId}") })).ShouldBe(false);
-            (await eventStore.AppendEvents(aggregateId, 1, new[] { new Event(1, "Created", $"Guid: {aggregateId}") })).ShouldBe(false);
+            (await eventStore.AppendEvents(aggregateId, 2, new[] { new Event(1, "Created", $"Guid: {aggregateId}") })).ShouldBe(false);
             (await eventStore.AppendEvents(aggregateId, 3, new[] { new Event(3, "Created", $"Guid: {aggregateId}") })).ShouldBe(false);
-            (await eventStore.AppendEvents(aggregateId, 2, new[] { new Event(2, "Created", $"Guid: {aggregateId}") })).ShouldBe(true);
+            (await eventStore.AppendEvents(aggregateId, 1, new[] { new Event(2, "Created", $"Guid: {aggregateId}") })).ShouldBe(true);
 
             (await eventStore.GetEvents(aggregateId).ToListAsync()).Count.ShouldBe(3);
         }

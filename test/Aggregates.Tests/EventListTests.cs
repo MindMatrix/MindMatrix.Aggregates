@@ -33,7 +33,7 @@ namespace MindMatrix.Aggregates
                 new Event( 2, "Deleted", $"Guid: {aggregateId}")
             };
 
-            await eventStore.AppendEvents(aggregateId, 0, events);
+            await eventStore.AppendEvents(aggregateId, -1, events);
 
             var eventListFactory = new EventListFactory(eventStore);
 

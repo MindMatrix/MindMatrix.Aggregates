@@ -13,7 +13,7 @@ namespace MindMatrix.Aggregates
             var eventList = await GetOrCreateEvents(aggregateId);
             lock (eventList)
             {
-                if (eventList.Count != expectedVersion)
+                if (eventList.Count - 1 != expectedVersion)
                     return false;
                 eventList.AddRange(events);
                 return true;
