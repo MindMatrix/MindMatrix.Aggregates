@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "MindMatrix.Aggregates";
-
-message AggregateVersion {
-    int32 value = 1;
-}
