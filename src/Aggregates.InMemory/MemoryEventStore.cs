@@ -2,6 +2,7 @@ namespace MindMatrix.Aggregates
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
 
@@ -36,9 +37,9 @@ namespace MindMatrix.Aggregates
             }
         }
 
-        public Task<Aggregate<T>> Get(string aggregateId) => Task.FromResult(GetOrCreateAggregate(aggregateId));
+        public Task<Aggregate<T>> Get(string aggregateId, CancellationToken token = default) => Task.FromResult(GetOrCreateAggregate(aggregateId));
 
-        public Task<bool> SaveChanges()
+        public Task<bool> SaveChanges(CancellationToken token = default)
         {
             foreach (var it in _aggregates.Values)
                 it.Commit();
