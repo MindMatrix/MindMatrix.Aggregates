@@ -36,7 +36,7 @@ namespace MindMatrix.Aggregates
 
         public async ValueTask DisposeAsync()
         {
-            //await _client.DropDatabaseAsync(_databaseId);
+            await _client.DropDatabaseAsync(_databaseId);
         }
     }
 }
