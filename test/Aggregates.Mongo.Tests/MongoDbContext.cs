@@ -30,10 +30,6 @@ namespace MindMatrix.Aggregates
             ConventionRegistry.Register("Defaults", conventionPack, t => true);
         }
 
-        private class C : ConventionBase, IConvention
-        {
-        }
-
         public async ValueTask DisposeAsync()
         {
             await _client.DropDatabaseAsync(_databaseId);
