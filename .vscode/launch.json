@@ -9,9 +9,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/test/Aggregates.Mongo.Tests/bin/Debug/netcoreapp3.1/Aggregates.Mongo.Tests.dll",
+      "program": "${workspaceFolder}/test/MindMatrix.Aggregates.Tests/bin/Debug/netcoreapp3.1/MindMatrix.Aggregates.Tests.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/test/Aggregates.Mongo.Tests",
+      "cwd": "${workspaceFolder}/test/MindMatrix.Aggregates.Tests",
       "console": "internalConsole",
       "stopAtEntry": false
     },

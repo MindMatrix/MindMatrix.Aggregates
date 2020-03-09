@@ -11,7 +11,7 @@ namespace MindMatrix.Aggregates
 
     public interface IMutation<T>
     {
-        void Apply(ref T aggregate);
+        void Apply(T aggregate);
     }
 
     public interface IAggregate<AggregateState>
@@ -99,7 +99,7 @@ namespace MindMatrix.Aggregates
 
         public void Apply<Mutation>(Mutation mutation) where Mutation : IMutation<AggregateState>
         {
-            mutation.Apply(ref _state);
+            mutation.Apply(_state);
             if (_newCommit == null)
             {
                 _newCommit = new MutationCommit<AggregateState>();
@@ -120,7 +120,7 @@ namespace MindMatrix.Aggregates
                 return;
 
             var lastMutation = DateTime.UtcNow;
-            if (MutationCommits.Count > _settings.MaxMutationCommits || _committedVersion == -1)
+            if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1)
             {
                 //we need to split to a new version
                 AggregateVersion++;
@@ -204,6 +204,8 @@ namespace MindMatrix.Aggregates
                 _database.CreateCollection(name);
 
                 var collection = _database.GetCollection<Aggregate<T>>(name);
+                collection.Indexes.DropOne("_id_");
+
                 var primaryIndex = new CreateIndexModel<Aggregate<T>>(
                     Builders<Aggregate<T>>.IndexKeys.Combine(
                             Builders<Aggregate<T>>.IndexKeys.Ascending(x => x.AggregateId),
@@ -214,6 +216,9 @@ namespace MindMatrix.Aggregates
                         Unique = true,
                     }
                 );
+
+                collection.Indexes.CreateOne(primaryIndex);
+
                 var ttlIndex = new CreateIndexModel<Aggregate<T>>(
                     Builders<Aggregate<T>>.IndexKeys.Ascending(x => x.TimeToLive),
                     new CreateIndexOptions()
@@ -221,8 +226,9 @@ namespace MindMatrix.Aggregates
                         ExpireAfter = TimeSpan.FromDays(100)
                     }
                 );
+                collection.Indexes.CreateOne(ttlIndex);
 
-                collection.Indexes.CreateOne(primaryIndex);
+
                 return true;
             });
 
@@ -235,13 +241,16 @@ namespace MindMatrix.Aggregates
     {
         //private readonly IMongoClient _client;
         //private readonly IMongoDatabase _database;
+
+        private readonly AggregateSettings _settings;
         private readonly IMongoCollection<Aggregate<T>> _collection;
         private readonly string _name = typeof(T).Name;
 
-        public AggregateRepository(IAggregateCollectionFactory repositoryFactory)
+        public AggregateRepository(IAggregateCollectionFactory repositoryFactory, AggregateSettings settings = default)
         {
             //_database = database;
             _collection = repositoryFactory.GetCollection<T>();
+            _settings = settings ?? new AggregateSettings();
         }
 
         public async Task<IAggregate<T>> GetLatest(string aggregateId)
@@ -267,8 +276,7 @@ namespace MindMatrix.Aggregates
                 record.State = new T();
             }
 
-            //TODO: aggregate settings
-            record.Initialize(_collection, new AggregateSettings());
+            record.Initialize(_collection, _settings);
             return record;
         }
     }
