@@ -21,6 +21,8 @@ namespace MindMatrix.Aggregates
     {
         MutationType GetByName(string mutationType);
         MutationType GetByType(Type type);
+
+        IEnumerable<MutationType> AllTypes { get; }
     }
 
     public class MutationTypeResolver<Aggregate> : IMutationTypeResolver<Aggregate>
@@ -39,6 +41,15 @@ namespace MindMatrix.Aggregates
                 var mutationType = new MutationType(it.Name, it);
                 _named.Add(mutationType.Name, mutationType);
                 _types.Add(mutationType.Type, mutationType);
+            }
+        }
+
+        public IEnumerable<MutationType> AllTypes
+        {
+            get
+            {
+                foreach (var it in _types.Values)
+                    yield return it;
             }
         }
 

@@ -6,6 +6,9 @@ namespace MindMatrix.Aggregates
     public interface IAggregateRepository<Aggregate>
         where Aggregate : new()
     {
+
+        Aggregate<Aggregate> Create();
+
         Task<Aggregate<Aggregate>> Get(string aggregateId, CancellationToken token = default);
         //void Save(Aggregate aggregate);
         //void Delete(string aggregateId);

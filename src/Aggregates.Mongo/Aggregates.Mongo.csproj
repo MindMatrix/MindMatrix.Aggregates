@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aggregates\Aggregates.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="mongodb.driver" Version="2.10.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

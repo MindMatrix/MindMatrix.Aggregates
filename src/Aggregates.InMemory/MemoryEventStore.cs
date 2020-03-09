@@ -37,6 +37,12 @@ namespace MindMatrix.Aggregates
             }
         }
 
+
+        public Aggregate<T> Create()
+        {
+            return GetOrCreateAggregate(System.Guid.NewGuid().ToString());
+        }
+
         public Task<Aggregate<T>> Get(string aggregateId, CancellationToken token = default) => Task.FromResult(GetOrCreateAggregate(aggregateId));
 
         public Task<bool> SaveChanges(CancellationToken token = default)

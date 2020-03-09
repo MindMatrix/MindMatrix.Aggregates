@@ -90,12 +90,18 @@ namespace MindMatrix.Aggregates
                 entity
                     .Property(e => e.Type)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .
+                    .HasMaxLength(100);
 
 
 
             });
+        }
+
+        public Aggregate<T> Create()
+        {
+            var agg = new SqlAggregate<T>(System.Guid.NewGuid().ToString());
+            Aggregates.Add(agg);
+            return agg;
         }
 
         public async Task<Aggregate<T>> Get(string aggregateId, CancellationToken token = default)
