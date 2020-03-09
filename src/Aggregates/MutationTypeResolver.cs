@@ -30,8 +30,9 @@ namespace MindMatrix.Aggregates
         private readonly Dictionary<string, MutationType> _named = new Dictionary<string, MutationType>();
         private readonly Dictionary<Type, MutationType> _types = new Dictionary<Type, MutationType>();
 
-        public MutationTypeResolver(Assembly assembly)
+        public MutationTypeResolver()
         {
+            var assembly = typeof(Aggregate).Assembly;
             var types = from x in assembly.GetExportedTypes()
                         where x.IsConcerteImpl(typeof(IMutation<Aggregate>))
                         select x;

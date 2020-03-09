@@ -41,9 +41,13 @@ namespace MindMatrix.Aggregates
 
         private readonly IMutationTypeResolver<T> _resolver;
 
-        public MongoAggregateRepository(IMongoDatabase database, IMutationTypeResolver<T> resolver)
+
+
+        public MongoAggregateRepository(IMongoClient client, IMongoDatabase database, IMutationTypeResolver<T> resolver)
         {
+            _client = client;
             _database = database;
+            _resolver = resolver;
             _aggregateCollection = _database.GetCollection<MongoAggregate>("aggregates");
             foreach (var it in resolver.AllTypes)
                 _eventCollections.Add(it.Name, _database.GetCollection<BsonDocument>($"event_{it.Name}"));
@@ -81,6 +85,7 @@ namespace MindMatrix.Aggregates
                 )
             }, token);
 
+
             session.StartTransaction();
             try
             {
@@ -111,8 +116,11 @@ namespace MindMatrix.Aggregates
 
                             var bdoc = new BsonDocument();
                             bdoc.Add("_id", ObjectId.GenerateNewId());
-                            bdoc.Add("EventId", baseVersion++);
-                            bdoc.Add("Data", BsonDocument.Create(ev));
+                            bdoc.Add("EventId", ++baseVersion);
+
+                            var mutationData = ev.ToBsonDocument();
+                            mutationData.Remove("_t");
+                            bdoc.Add("Data", mutationData);
 
                             await eventCollection.InsertOneAsync(session, bdoc, default(InsertOneOptions), token);
                         }
@@ -121,10 +129,13 @@ namespace MindMatrix.Aggregates
                     }
                 }
                 await session.CommitTransactionAsync();
+                foreach (var it in _loadedAggregates)
+                    it.Commit();
             }
             catch //(Exception ex)
             {
                 await session.AbortTransactionAsync();
+                throw;
             }
 
             return true;

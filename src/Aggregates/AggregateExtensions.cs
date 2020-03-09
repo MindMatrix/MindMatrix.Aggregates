@@ -32,6 +32,9 @@ public static class AggregateExtensions
         {
             if (it.IsGenericType && it.GetGenericTypeDefinition() == genericType)
                 return true;
+
+            if (it == genericType)
+                return true;
         }
 
         if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
