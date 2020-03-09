@@ -47,7 +47,7 @@ namespace MindMatrix.Aggregates
         where Aggregate : new()
     {
         public ObjectId CommitId { get; set; }
-        public List<MutationEvent<Aggregate>> Mutations { get; set; }
+        public List<MutationEvent<Aggregate>> MutationEvents { get; set; }
     }
 
     public class AggregateSettings
@@ -64,6 +64,8 @@ namespace MindMatrix.Aggregates
         private MutationCommit<AggregateState> _newCommit;
 
         [BsonId]
+        public ObjectId Id { get; set; }
+
         public string AggregateId { get; set; }
 
         public long AggregateVersion { get; set; }
@@ -95,6 +97,10 @@ namespace MindMatrix.Aggregates
             _collection = collection;
             _settings = settings;
             _committedVersion = MutationVersion;
+
+            foreach (var commits in MutationCommits)
+                foreach (var mutationEvent in commits.MutationEvents)
+                    mutationEvent.Mutation.Apply(_state);
         }
 
         public void Apply<Mutation>(Mutation mutation) where Mutation : IMutation<AggregateState>
@@ -104,10 +110,10 @@ namespace MindMatrix.Aggregates
             {
                 _newCommit = new MutationCommit<AggregateState>();
                 _newCommit.CommitId = ObjectId.GenerateNewId();
-                _newCommit.Mutations = new List<MutationEvent<AggregateState>>();
+                _newCommit.MutationEvents = new List<MutationEvent<AggregateState>>();
             }
 
-            _newCommit.Mutations.Add(new MutationEvent<AggregateState>()
+            _newCommit.MutationEvents.Add(new MutationEvent<AggregateState>()
             {
                 EventId = ++MutationVersion,
                 Mutation = mutation
@@ -123,17 +129,27 @@ namespace MindMatrix.Aggregates
             if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1)
             {
                 //we need to split to a new version
+
+                //if no commit we need to reset the state to default
+                var oldState = State;
+                if (_committedVersion == -1)
+                    State = new AggregateState();
+
+                Id = ObjectId.GenerateNewId();
                 AggregateVersion++;
                 LastMutation = lastMutation;
+
                 _committedVersion = MutationVersion;
+                MutationCommits.Clear();
                 MutationCommits.Add(_newCommit);
                 _newCommit = null;
 
                 await _collection.InsertOneAsync(
-                    this,
-                    default(InsertOneOptions),
-                    token
-                );
+                                      this,
+                                      default(InsertOneOptions),
+                                      token
+                                  );
+                State = oldState;
             }
             else
             {
@@ -204,7 +220,6 @@ namespace MindMatrix.Aggregates
                 _database.CreateCollection(name);
 
                 var collection = _database.GetCollection<Aggregate<T>>(name);
-                collection.Indexes.DropOne("_id_");
 
                 var primaryIndex = new CreateIndexModel<Aggregate<T>>(
                     Builders<Aggregate<T>>.IndexKeys.Combine(
@@ -263,9 +278,7 @@ namespace MindMatrix.Aggregates
                 }
             );
 
-
             var record = await query.FirstOrDefaultAsync();
-
             if (record == null)
             {
                 record = new Aggregate<T>();

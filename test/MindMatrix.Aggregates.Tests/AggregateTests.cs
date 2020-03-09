@@ -7,7 +7,6 @@ namespace MindMatrix.Aggregates.Tests
 {
     public class AggregateEventStreamTests
     {
-
         public class License
         {
             public string TitleId { get; internal set; }
@@ -48,7 +47,7 @@ namespace MindMatrix.Aggregates.Tests
             var factory = new AggregateCollectionFactory(database);
             var repository = new AggregateRepository<License>(factory);
 
-            var aggregateId = Guid.NewGuid().ToString();
+            var aggregateId = "CreatesNewAggregate";
             var aggregate = await repository.GetLatest(aggregateId);
             var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
 
@@ -62,11 +61,12 @@ namespace MindMatrix.Aggregates.Tests
 
             record.ShouldNotBeNull();
             record.AggregateVersion.ShouldBe(0);
+            record.State.ExpiresOn.ShouldBe(new DateTime(1, 1, 1, 0, 0, 0, DateTimeKind.Utc));
             record.MutationVersion.ShouldBe(0);
             record.MutationCommits.Count.ShouldBe(1);
-            record.MutationCommits[0].Mutations.Count.ShouldBe(1);
-            record.MutationCommits[0].Mutations[0].EventId.ShouldBe(0);
-            record.MutationCommits[0].Mutations[0].Mutation.ShouldBeOfType<LicenseCreated>().CreatedOn.ShouldBe(createdOn);
+            record.MutationCommits[0].MutationEvents.Count.ShouldBe(1);
+            record.MutationCommits[0].MutationEvents[0].EventId.ShouldBe(0);
+            record.MutationCommits[0].MutationEvents[0].Mutation.ShouldBeOfType<LicenseCreated>().CreatedOn.ShouldBe(createdOn);
         }
 
         public async Task MutatesExistingAggregate()
@@ -77,7 +77,7 @@ namespace MindMatrix.Aggregates.Tests
             var factory = new AggregateCollectionFactory(database);
             var repository = new AggregateRepository<License>(factory);
 
-            var aggregateId = Guid.NewGuid().ToString();
+            var aggregateId = "MutatesExistingAggregate";
             var aggregate = await repository.GetLatest(aggregateId);
             var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
 
@@ -100,14 +100,14 @@ namespace MindMatrix.Aggregates.Tests
             record.AggregateVersion.ShouldBe(0);
             record.MutationVersion.ShouldBe(2);
             record.MutationCommits.Count.ShouldBe(2);
-            record.MutationCommits[0].Mutations.Count.ShouldBe(1);
-            record.MutationCommits[0].Mutations[0].EventId.ShouldBe(0);
-            record.MutationCommits[0].Mutations[0].Mutation.ShouldBeOfType<LicenseCreated>().CreatedOn.ShouldBe(createdOn);
-            record.MutationCommits[1].Mutations.Count.ShouldBe(2);
-            record.MutationCommits[1].Mutations[0].EventId.ShouldBe(1);
-            record.MutationCommits[1].Mutations[0].Mutation.ShouldBeOfType<LicenseNoop>();
-            record.MutationCommits[1].Mutations[1].EventId.ShouldBe(2);
-            record.MutationCommits[1].Mutations[1].Mutation.ShouldBeOfType<LicenseReleased>();
+            record.MutationCommits[0].MutationEvents.Count.ShouldBe(1);
+            record.MutationCommits[0].MutationEvents[0].EventId.ShouldBe(0);
+            record.MutationCommits[0].MutationEvents[0].Mutation.ShouldBeOfType<LicenseCreated>().CreatedOn.ShouldBe(createdOn);
+            record.MutationCommits[1].MutationEvents.Count.ShouldBe(2);
+            record.MutationCommits[1].MutationEvents[0].EventId.ShouldBe(1);
+            record.MutationCommits[1].MutationEvents[0].Mutation.ShouldBeOfType<LicenseNoop>();
+            record.MutationCommits[1].MutationEvents[1].EventId.ShouldBe(2);
+            record.MutationCommits[1].MutationEvents[1].Mutation.ShouldBeOfType<LicenseReleased>();
         }
 
         public async Task ShouldSplit()
@@ -119,7 +119,7 @@ namespace MindMatrix.Aggregates.Tests
             var factory = new AggregateCollectionFactory(database);
             var repository = new AggregateRepository<License>(factory, aggregateSettings);
 
-            var aggregateId = Guid.NewGuid().ToString();
+            var aggregateId = "ShouldSplit";
             var aggregate = await repository.GetLatest(aggregateId);
             var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
 
@@ -136,7 +136,7 @@ namespace MindMatrix.Aggregates.Tests
 
             var collection = database.GetCollection<Aggregate<License>>("License");
             var query = await collection.FindAsync(
-                x => x.AggregateId == aggregateId && x.AggregateVersion == 0,
+                x => x.AggregateId == aggregateId,
                 new FindOptions<Aggregate<License>>()
                 {
                     Sort = Builders<Aggregate<License>>.Sort.Descending(x => x.AggregateVersion),
@@ -149,15 +149,34 @@ namespace MindMatrix.Aggregates.Tests
             record.ShouldNotBeNull();
             record.AggregateVersion.ShouldBe(1);
             record.MutationVersion.ShouldBe(2);
-            record.MutationCommits.Count.ShouldBe(2);
-            record.MutationCommits[0].Mutations.Count.ShouldBe(1);
-            record.MutationCommits[0].Mutations[0].EventId.ShouldBe(0);
-            record.MutationCommits[0].Mutations[0].Mutation.ShouldBeOfType<LicenseCreated>().CreatedOn.ShouldBe(createdOn);
-            record.MutationCommits[1].Mutations.Count.ShouldBe(2);
-            record.MutationCommits[1].Mutations[0].EventId.ShouldBe(1);
-            record.MutationCommits[1].Mutations[0].Mutation.ShouldBeOfType<LicenseNoop>();
-            record.MutationCommits[1].Mutations[1].EventId.ShouldBe(2);
-            record.MutationCommits[1].Mutations[1].Mutation.ShouldBeOfType<LicenseReleased>();
+            record.MutationCommits.Count.ShouldBe(1);
+            record.MutationCommits[0].MutationEvents.Count.ShouldBe(2);
+            record.MutationCommits[0].MutationEvents[0].EventId.ShouldBe(1);
+            record.MutationCommits[0].MutationEvents[0].Mutation.ShouldBeOfType<LicenseNoop>();
+            record.MutationCommits[0].MutationEvents[1].EventId.ShouldBe(2);
+            record.MutationCommits[0].MutationEvents[1].Mutation.ShouldBeOfType<LicenseReleased>();
+        }
+
+        public async Task ShouldReplayOnLoad()
+        {
+            var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
+            var client = new MongoClient(connectionSettings);
+            var database = client.GetDatabase("aggregates");
+            var factory = new AggregateCollectionFactory(database);
+            var repository = new AggregateRepository<License>(factory);
+
+            var aggregateId = "ShouldReplayOnLoad";
+            var aggregate = await repository.GetLatest(aggregateId);
+            var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
+
+            aggregate.Apply(new LicenseNoop());
+            await aggregate.Commit();
+
+            aggregate.Apply(new LicenseCreated() { CreatedOn = createdOn });
+            await aggregate.Commit();
+
+            aggregate = await repository.GetLatest(aggregateId);
+            aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
         }
     }
 }
