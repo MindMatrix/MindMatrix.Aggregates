@@ -1,0 +1,1169 @@
+[0] 00 :: [READ        ] { Id: agg_06, V: -1, E: False, C: 000000000000000000000000, M: -1, S: { Count: 0 } }
+[0] 00 :: [Concurrency] Tried 0 -> 6 [6], { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4fef1, M: 1, S: { Count: 0 } }
+[0] 00 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 0, S: { Count: 2 } }
+[0] 00 :: [Concurrency] Tried 2 -> 8 [6], { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 2, S: { Count: 8 } }
+[0] 00 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4ff08, M: 3, S: { Count: 14 } }
+[0] 00 :: [Updated     ] Amount: 6, 14 -> 20, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff16, M: 5, S: { Count: 20 } }
+
+[1] 00 :: [READ        ] { Id: agg_06, V: -1, E: False, C: 000000000000000000000000, M: -1, S: { Count: 0 } }
+[1] 00 :: [Concurrency] Tried 0 -> 12 [12], { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4fef3, M: 2, S: { Count: 0 } }
+[1] 00 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 0, S: { Count: 2 } }
+[1] 00 :: [Updated     ] Amount: 12, 2 -> 14, { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4ff08, M: 3, S: { Count: 14 } }
+
+[2] 00 :: [READ        ] { Id: agg_06, V: -1, E: False, C: 000000000000000000000000, M: -1, S: { Count: 0 } }
+[2] 00 :: [New         ] Amount: 2, 0 -> 2, { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 0, S: { Count: 2 } }
+
+[E] 01 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 0, S: { Count: 2 } }
+[F] 01 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4ff08, M: 3, S: { Count: 14 } }
+[E] 01 :: [Concurrency] Tried 2 -> 5 [3], { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4feeb, M: 1, S: { Count: 5 } }
+[F] 01 :: [Concurrency] Tried 14 -> 23 [9], { Id: agg_06, V: 0, E: True, C: 5e67951d340bc14d68e4ff08, M: 5, S: { Count: 23 } }
+[E] 01 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff16, M: 5, S: { Count: 20 } }
+[F] 01 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff16, M: 5, S: { Count: 20 } }
+[F] 01 :: [Concurrency] Tried 20 -> 29 [9], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff16, M: 7, S: { Count: 29 } }
+[E] 01 :: [Updated     ] Amount: 3, 20 -> 23, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff22, M: 6, S: { Count: 23 } }
+[F] 01 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff22, M: 6, S: { Count: 23 } }
+[F] 01 :: [Updated     ] Amount: 9, 23 -> 32, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff32, M: 8, S: { Count: 32 } }
+[0] 02 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff32, M: 8, S: { Count: 32 } }
+[6] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff47, M: 12, S: { Count: 47 } }
+[C] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff47, M: 12, S: { Count: 47 } }
+[8] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff47, M: 12, S: { Count: 47 } }
+[6] 03 :: [Updated     ] Amount: 9, 47 -> 56, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff4c, M: 14, S: { Count: 56 } }
+[8] 03 :: [Concurrency] Tried 47 -> 62 [15], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff47, M: 16, S: { Count: 62 } }
+[C] 03 :: [Concurrency] Tried 47 -> 57 [10], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff47, M: 15, S: { Count: 57 } }
+[8] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff4c, M: 14, S: { Count: 56 } }
+[C] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff4c, M: 14, S: { Count: 56 } }
+[0] 02 :: [*Updated    ] Expected: 47, Actual: 56, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff4c, M: 14, S: { Count: 56 } }
+[8] 03 :: [Concurrency] Tried 56 -> 71 [15], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff4c, M: 18, S: { Count: 71 } }
+[C] 03 :: [Updated     ] Amount: 10, 56 -> 66, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff5b, M: 17, S: { Count: 66 } }
+[8] 03 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff5b, M: 17, S: { Count: 66 } }
+[3] 04 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff5b, M: 17, S: { Count: 66 } }
+[3] 04 :: [Concurrency] Tried 66 -> 75 [9], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff5b, M: 20, S: { Count: 75 } }
+[7] 05 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff6b, M: 21, S: { Count: 81 } }
+[8] 03 :: [Updated     ] Amount: 15, 66 -> 81, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff6b, M: 21, S: { Count: 81 } }
+[3] 04 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff6b, M: 21, S: { Count: 81 } }
+[3] 04 :: [Concurrency] Tried 81 -> 90 [9], { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff6b, M: 24, S: { Count: 90 } }
+[7] 05 :: [Updated     ] Amount: 9, 81 -> 90, { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff77, M: 23, S: { Count: 90 } }
+[3] 04 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff77, M: 23, S: { Count: 90 } }
+[B] 07 :: [READ        ] { Id: agg_06, V: 0, E: True, C: 5e67951e340bc14d68e4ff77, M: 23, S: { Count: 90 } }
+[B] 07 :: [Concurrency] Tried 90 -> 94 [4], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ff92, M: 24, S: { Count: 94 } }
+[B] 07 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ff90, M: 26, S: { Count: 99 } }
+[B] 07 :: [Updated     ] Amount: 4, 99 -> 103, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ff9f, M: 27, S: { Count: 103 } }
+[B] 09 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ff9f, M: 27, S: { Count: 103 } }
+[3] 04 :: [*Split      ] Expected: 99, Actual: 103, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ff9f, M: 27, S: { Count: 103 } }
+[D] 04 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffbc, M: 30, S: { Count: 114 } }
+[B] 09 :: [Updated     ] Amount: 11, 103 -> 114, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffbc, M: 30, S: { Count: 114 } }
+[B] 0A :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffbc, M: 30, S: { Count: 114 } }
+[B] 0A :: [Concurrency] Tried 114 -> 130 [16], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffbc, M: 34, S: { Count: 130 } }
+[D] 04 :: [Updated     ] Amount: 14, 114 -> 128, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffce, M: 34, S: { Count: 128 } }
+[9] 05 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffce, M: 34, S: { Count: 128 } }
+[B] 0A :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffce, M: 34, S: { Count: 128 } }
+[B] 0A :: [Concurrency] Tried 128 -> 144 [16], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffce, M: 38, S: { Count: 144 } }
+[9] 05 :: [Updated     ] Amount: 7, 128 -> 135, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffda, M: 36, S: { Count: 135 } }
+[B] 0A :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffda, M: 36, S: { Count: 135 } }
+[B] 0A :: [Updated     ] Amount: 16, 135 -> 151, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 40, S: { Count: 151 } }
+[3] 07 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 40, S: { Count: 151 } }
+[B] 0B :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 40, S: { Count: 151 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 40, S: { Count: 151 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 40, S: { Count: 151 } }
+[B] 0B :: [Concurrency] Tried 151 -> 158 [7], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 42, S: { Count: 158 } }
+[3] 07 :: [Updated     ] Amount: 14, 151 -> 165, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[A] 08 :: [Concurrency] Tried 151 -> 167 [16], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 44, S: { Count: 167 } }
+[8] 08 :: [Concurrency] Tried 151 -> 161 [10], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffee, M: 44, S: { Count: 161 } }
+[B] 0B :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[3] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[4] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[3] 08 :: [Concurrency] Tried 165 -> 183 [18], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 48, S: { Count: 183 } }
+[4] 08 :: [Concurrency] Tried 165 -> 167 [2], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 45, S: { Count: 167 } }
+[B] 0B :: [Updated     ] Amount: 7, 165 -> 172, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 46, S: { Count: 172 } }
+[1] 0A :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 44, S: { Count: 165 } }
+[3] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 46, S: { Count: 172 } }
+[4] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 46, S: { Count: 172 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 46, S: { Count: 172 } }
+[1] 0A :: [Concurrency] Tried 165 -> 171 [6], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 46, S: { Count: 171 } }
+[4] 08 :: [Concurrency] Tried 172 -> 174 [2], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 47, S: { Count: 174 } }
+[3] 08 :: [Updated     ] Amount: 18, 172 -> 190, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 50, S: { Count: 190 } }
+[1] 0A :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 50, S: { Count: 190 } }
+[4] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 50, S: { Count: 190 } }
+[3] 09 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 50, S: { Count: 190 } }
+[A] 08 :: [Concurrency] Tried 172 -> 188 [16], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e5000d, M: 50, S: { Count: 188 } }
+[4] 08 :: [Concurrency] Tried 190 -> 192 [2], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 51, S: { Count: 192 } }
+[3] 09 :: [Concurrency] Tried 190 -> 206 [16], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50018, M: 54, S: { Count: 206 } }
+[1] 0A :: [Updated     ] Amount: 6, 190 -> 196, { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50023, M: 52, S: { Count: 196 } }
+[8] 08 :: [Concurrency] Tried 165 -> 175 [10], { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e4ffff, M: 48, S: { Count: 175 } }
+[4] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50023, M: 52, S: { Count: 196 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50023, M: 52, S: { Count: 196 } }
+[3] 09 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50023, M: 52, S: { Count: 196 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 1, E: True, C: 5e67951e340bc14d68e50023, M: 52, S: { Count: 196 } }
+[9] 0B :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50032, M: 53, S: { Count: 198 } }
+[A] 08 :: [Concurrency] Tried 196 -> 212 [16], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50037, M: 56, S: { Count: 212 } }
+[3] 09 :: [Concurrency] Tried 196 -> 212 [16], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5003f, M: 56, S: { Count: 212 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50032, M: 53, S: { Count: 198 } }
+[3] 09 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50045, M: 54, S: { Count: 203 } }
+[8] 08 :: [Concurrency] Tried 196 -> 206 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50043, M: 56, S: { Count: 206 } }
+[A] 08 :: [Concurrency] Tried 198 -> 214 [16], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50032, M: 57, S: { Count: 214 } }
+[9] 0B :: [Updated     ] Amount: 5, 198 -> 203, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50045, M: 54, S: { Count: 203 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 58, S: { Count: 219 } }
+[4] 08 :: [*Split      ] Expected: 198, Actual: 219, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 58, S: { Count: 219 } }
+[3] 09 :: [Updated     ] Amount: 16, 203 -> 219, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 58, S: { Count: 219 } }
+[9] 0C :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 58, S: { Count: 219 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 58, S: { Count: 219 } }
+[8] 08 :: [Concurrency] Tried 219 -> 229 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 62, S: { Count: 229 } }
+[A] 08 :: [Concurrency] Tried 219 -> 235 [16], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5004e, M: 62, S: { Count: 235 } }
+[9] 0C :: [Updated     ] Amount: 12, 219 -> 231, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 61, S: { Count: 231 } }
+[2] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 61, S: { Count: 231 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 61, S: { Count: 231 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 61, S: { Count: 231 } }
+[8] 08 :: [Concurrency] Tried 231 -> 241 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 65, S: { Count: 241 } }
+[2] 08 :: [Updated     ] Amount: 10, 231 -> 241, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50060, M: 64, S: { Count: 241 } }
+[A] 08 :: [Concurrency] Tried 231 -> 247 [16], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 65, S: { Count: 247 } }
+[F] 0D :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 61, S: { Count: 231 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50060, M: 64, S: { Count: 241 } }
+[A] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50060, M: 64, S: { Count: 241 } }
+[8] 08 :: [Concurrency] Tried 241 -> 251 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50060, M: 68, S: { Count: 251 } }
+[F] 0D :: [Concurrency] Tried 231 -> 249 [18], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50056, M: 65, S: { Count: 249 } }
+[6] 10 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 68, S: { Count: 257 } }
+[A] 08 :: [Updated     ] Amount: 16, 241 -> 257, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 68, S: { Count: 257 } }
+[F] 0D :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 68, S: { Count: 257 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 68, S: { Count: 257 } }
+[6] 10 :: [Updated     ] Amount: 7, 257 -> 264, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50079, M: 70, S: { Count: 264 } }
+[4] 0A :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50079, M: 70, S: { Count: 264 } }
+[8] 08 :: [Concurrency] Tried 257 -> 267 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 72, S: { Count: 267 } }
+[F] 0D :: [Concurrency] Tried 257 -> 275 [18], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5006f, M: 72, S: { Count: 275 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50079, M: 70, S: { Count: 264 } }
+[F] 0D :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50084, M: 72, S: { Count: 271 } }
+[4] 0A :: [Updated     ] Amount: 7, 264 -> 271, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50084, M: 72, S: { Count: 271 } }
+[8] 08 :: [Concurrency] Tried 264 -> 274 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50079, M: 74, S: { Count: 274 } }
+[4] 0B :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50084, M: 72, S: { Count: 271 } }
+[E] 12 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5008f, M: 76, S: { Count: 289 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5008f, M: 76, S: { Count: 289 } }
+[4] 0B :: [Concurrency] Tried 271 -> 278 [7], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50084, M: 74, S: { Count: 278 } }
+[8] 08 :: [Concurrency] Tried 289 -> 299 [10], { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5008f, M: 80, S: { Count: 299 } }
+[F] 0D :: [Updated     ] Amount: 18, 271 -> 289, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e5008f, M: 76, S: { Count: 289 } }
+[4] 0B :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50093, M: 80, S: { Count: 304 } }
+[F] 0E :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50093, M: 80, S: { Count: 304 } }
+[E] 12 :: [Updated     ] Amount: 15, 289 -> 304, { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50093, M: 80, S: { Count: 304 } }
+[8] 08 :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50093, M: 80, S: { Count: 304 } }
+[9] 0F :: [READ        ] { Id: agg_06, V: 2, E: True, C: 5e67951e340bc14d68e50093, M: 80, S: { Count: 304 } }
+[4] 0B :: [Concurrency] Tried 304 -> 311 [7], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e5009f, M: 82, S: { Count: 311 } }
+[4] 0B :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500a3, M: 81, S: { Count: 307 } }
+[8] 08 :: [Concurrency] Tried 304 -> 314 [10], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500a7, M: 84, S: { Count: 314 } }
+[F] 0E :: [Split       ] Amount: 3, 304 -> 307, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500a3, M: 81, S: { Count: 307 } }
+[9] 0F :: [Concurrency] Tried 304 -> 309 [5], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500aa, M: 81, S: { Count: 309 } }
+[9] 0F :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500a3, M: 81, S: { Count: 307 } }
+[9] 0F :: [Concurrency] Tried 307 -> 312 [5], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500a3, M: 82, S: { Count: 312 } }
+[4] 0B :: [Updated     ] Amount: 7, 307 -> 314, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500b2, M: 83, S: { Count: 314 } }
+[9] 0F :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500b2, M: 83, S: { Count: 314 } }
+[9] 0F :: [Updated     ] Amount: 5, 314 -> 319, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500c7, M: 84, S: { Count: 319 } }
+[6] 15 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500c7, M: 84, S: { Count: 319 } }
+[B] 15 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500c7, M: 84, S: { Count: 319 } }
+[6] 15 :: [Concurrency] Tried 319 -> 322 [3], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500c7, M: 85, S: { Count: 322 } }
+[B] 15 :: [Updated     ] Amount: 9, 319 -> 328, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500f0, M: 86, S: { Count: 328 } }
+[6] 15 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500f0, M: 86, S: { Count: 328 } }
+[7] 13 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500fc, M: 87, S: { Count: 331 } }
+[6] 15 :: [Updated     ] Amount: 3, 328 -> 331, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e500fc, M: 87, S: { Count: 331 } }
+[7] 13 :: [Updated     ] Amount: 11, 331 -> 342, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50105, M: 90, S: { Count: 342 } }
+[A] 0E :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50105, M: 90, S: { Count: 342 } }
+[A] 0E :: [Updated     ] Amount: 11, 342 -> 353, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50119, M: 93, S: { Count: 353 } }
+[6] 18 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50119, M: 93, S: { Count: 353 } }
+[B] 18 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50142, M: 96, S: { Count: 361 } }
+[6] 18 :: [Updated     ] Amount: 8, 353 -> 361, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50142, M: 96, S: { Count: 361 } }
+[E] 19 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50142, M: 96, S: { Count: 361 } }
+[B] 18 :: [Concurrency] Tried 361 -> 375 [14], { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50142, M: 100, S: { Count: 375 } }
+[B] 18 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50151, M: 97, S: { Count: 365 } }
+[E] 19 :: [Updated     ] Amount: 4, 361 -> 365, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50151, M: 97, S: { Count: 365 } }
+[4] 11 :: [READ        ] { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50167, M: 101, S: { Count: 379 } }
+[B] 18 :: [Updated     ] Amount: 14, 365 -> 379, { Id: agg_06, V: 3, E: True, C: 5e67951e340bc14d68e50167, M: 101, S: { Count: 379 } }
+[4] 11 :: [Split       ] Amount: 15, 379 -> 394, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5016c, M: 105, S: { Count: 394 } }
+[D] 13 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5016c, M: 105, S: { Count: 394 } }
+[F] 16 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5016c, M: 105, S: { Count: 394 } }
+[F] 16 :: [Concurrency] Tried 394 -> 407 [13], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5016c, M: 109, S: { Count: 407 } }
+[3] 18 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501a1, M: 106, S: { Count: 398 } }
+[D] 13 :: [Updated     ] Amount: 4, 394 -> 398, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501a1, M: 106, S: { Count: 398 } }
+[F] 16 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501a1, M: 106, S: { Count: 398 } }
+[F] 16 :: [Concurrency] Tried 398 -> 411 [13], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501a1, M: 110, S: { Count: 411 } }
+[3] 18 :: [Updated     ] Amount: 15, 398 -> 413, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ac, M: 110, S: { Count: 413 } }
+[F] 16 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ac, M: 110, S: { Count: 413 } }
+[F] 16 :: [Updated     ] Amount: 13, 413 -> 426, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 114, S: { Count: 426 } }
+[D] 15 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 114, S: { Count: 426 } }
+[0] 19 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 114, S: { Count: 426 } }
+[4] 14 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 114, S: { Count: 426 } }
+[4] 14 :: [Concurrency] Tried 426 -> 444 [18], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 118, S: { Count: 444 } }
+[D] 15 :: [Updated     ] Amount: 13, 426 -> 439, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501d0, M: 118, S: { Count: 439 } }
+[0] 19 :: [Concurrency] Tried 426 -> 431 [5], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501b8, M: 115, S: { Count: 431 } }
+[0] 19 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501d0, M: 118, S: { Count: 439 } }
+[4] 14 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501d0, M: 118, S: { Count: 439 } }
+[4] 14 :: [Concurrency] Tried 439 -> 457 [18], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501d0, M: 122, S: { Count: 457 } }
+[4] 14 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501e6, M: 119, S: { Count: 444 } }
+[0] 19 :: [Updated     ] Amount: 5, 439 -> 444, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501e6, M: 119, S: { Count: 444 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501e6, M: 119, S: { Count: 444 } }
+[2] 16 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 123, S: { Count: 462 } }
+[C] 1D :: [Concurrency] Tried 444 -> 448 [4], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501e6, M: 120, S: { Count: 448 } }
+[4] 14 :: [Updated     ] Amount: 18, 444 -> 462, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 123, S: { Count: 462 } }
+[D] 17 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 123, S: { Count: 462 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 123, S: { Count: 462 } }
+[2] 16 :: [Updated     ] Amount: 11, 462 -> 473, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501fa, M: 126, S: { Count: 473 } }
+[D] 17 :: [Concurrency] Tried 462 -> 466 [4], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 124, S: { Count: 466 } }
+[C] 1D :: [Concurrency] Tried 462 -> 466 [4], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501ee, M: 124, S: { Count: 466 } }
+[D] 17 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501fa, M: 126, S: { Count: 473 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501fa, M: 126, S: { Count: 473 } }
+[D] 17 :: [Updated     ] Amount: 4, 473 -> 477, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 127, S: { Count: 477 } }
+[C] 1D :: [Concurrency] Tried 473 -> 477 [4], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e501fa, M: 127, S: { Count: 477 } }
+[8] 1A :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 127, S: { Count: 477 } }
+[D] 18 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 127, S: { Count: 477 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 127, S: { Count: 477 } }
+[1] 19 :: [READ        ] { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e50219, M: 129, S: { Count: 482 } }
+[D] 18 :: [Concurrency] Tried 477 -> 480 [3], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 128, S: { Count: 480 } }
+[8] 1A :: [Updated     ] Amount: 5, 477 -> 482, { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e50219, M: 129, S: { Count: 482 } }
+[C] 1D :: [Concurrency] Tried 477 -> 481 [4], { Id: agg_06, V: 4, E: True, C: 5e67951e340bc14d68e5020f, M: 128, S: { Count: 481 } }
+[D] 18 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50223, M: 130, S: { Count: 486 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50223, M: 130, S: { Count: 486 } }
+[D] 18 :: [Updated     ] Amount: 3, 486 -> 489, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50228, M: 131, S: { Count: 489 } }
+[C] 1D :: [Concurrency] Tried 486 -> 490 [4], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50223, M: 131, S: { Count: 490 } }
+[1] 19 :: [*Split      ] Expected: 486, Actual: 489, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50228, M: 131, S: { Count: 489 } }
+[C] 1D :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50228, M: 131, S: { Count: 489 } }
+[F] 1B :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50237, M: 132, S: { Count: 493 } }
+[C] 1D :: [Updated     ] Amount: 4, 489 -> 493, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50237, M: 132, S: { Count: 493 } }
+[F] 1B :: [Updated     ] Amount: 5, 493 -> 498, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50242, M: 133, S: { Count: 498 } }
+[8] 1D :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e50242, M: 133, S: { Count: 498 } }
+[8] 1D :: [Updated     ] Amount: 7, 498 -> 505, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5025e, M: 135, S: { Count: 505 } }
+[2] 19 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5025e, M: 135, S: { Count: 505 } }
+[2] 19 :: [Updated     ] Amount: 6, 505 -> 511, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5026c, M: 137, S: { Count: 511 } }
+[7] 1C :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5026c, M: 137, S: { Count: 511 } }
+[8] 20 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5026c, M: 137, S: { Count: 511 } }
+[8] 20 :: [Concurrency] Tried 511 -> 526 [15], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e5026c, M: 140, S: { Count: 526 } }
+[7] 1C :: [Updated     ] Amount: 7, 511 -> 518, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502b4, M: 139, S: { Count: 518 } }
+[8] 20 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502b4, M: 139, S: { Count: 518 } }
+[3] 20 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502b4, M: 139, S: { Count: 518 } }
+[3] 20 :: [Concurrency] Tried 518 -> 529 [11], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502b4, M: 143, S: { Count: 529 } }
+[8] 20 :: [Updated     ] Amount: 15, 518 -> 533, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 142, S: { Count: 533 } }
+[8] 21 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 142, S: { Count: 533 } }
+[3] 20 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 142, S: { Count: 533 } }
+[A] 1B :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 142, S: { Count: 533 } }
+[3] 20 :: [Concurrency] Tried 533 -> 544 [11], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 146, S: { Count: 544 } }
+[A] 1B :: [Concurrency] Tried 533 -> 538 [5], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502c3, M: 144, S: { Count: 538 } }
+[3] 20 :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502d4, M: 144, S: { Count: 538 } }
+[8] 21 :: [Updated     ] Amount: 5, 533 -> 538, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502d4, M: 144, S: { Count: 538 } }
+[A] 1B :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502d4, M: 144, S: { Count: 538 } }
+[A] 1B :: [Concurrency] Tried 538 -> 543 [5], { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502d4, M: 146, S: { Count: 543 } }
+[A] 1B :: [READ        ] { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502e4, M: 148, S: { Count: 549 } }
+[3] 20 :: [Updated     ] Amount: 11, 538 -> 549, { Id: agg_06, V: 5, E: True, C: 5e67951e340bc14d68e502e4, M: 148, S: { Count: 549 } }
+[3] 21 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e502f3, M: 150, S: { Count: 554 } }
+[A] 1B :: [*Split      ] Expected: 554, Actual: 562, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e502fe, M: 152, S: { Count: 562 } }
+[3] 21 :: [Updated     ] Amount: 8, 554 -> 562, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e502fe, M: 152, S: { Count: 562 } }
+[D] 20 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e502fe, M: 152, S: { Count: 562 } }
+[D] 20 :: [Updated     ] Amount: 8, 562 -> 570, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5030c, M: 155, S: { Count: 570 } }
+[1] 22 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5030c, M: 155, S: { Count: 570 } }
+[1] 22 :: [Updated     ] Amount: 12, 570 -> 582, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50319, M: 158, S: { Count: 582 } }
+[5] 25 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50319, M: 158, S: { Count: 582 } }
+[5] 25 :: [Updated     ] Amount: 12, 582 -> 594, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50341, M: 162, S: { Count: 594 } }
+[2] 22 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50341, M: 162, S: { Count: 594 } }
+[2] 22 :: [Updated     ] Amount: 12, 594 -> 606, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 165, S: { Count: 606 } }
+[4] 28 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 165, S: { Count: 606 } }
+[C] 2A :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 165, S: { Count: 606 } }
+[D] 29 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 165, S: { Count: 606 } }
+[C] 2A :: [Concurrency] Tried 606 -> 616 [10], { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 168, S: { Count: 616 } }
+[D] 29 :: [Concurrency] Tried 606 -> 609 [3], { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50377, M: 166, S: { Count: 609 } }
+[C] 2A :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5040c, M: 167, S: { Count: 615 } }
+[4] 28 :: [Updated     ] Amount: 9, 606 -> 615, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5040c, M: 167, S: { Count: 615 } }
+[D] 29 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5040c, M: 167, S: { Count: 615 } }
+[C] 2A :: [Updated     ] Amount: 10, 615 -> 625, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50418, M: 170, S: { Count: 625 } }
+[D] 29 :: [Concurrency] Tried 615 -> 618 [3], { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e5040c, M: 168, S: { Count: 618 } }
+[1] 2D :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50418, M: 170, S: { Count: 625 } }
+[D] 29 :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50418, M: 170, S: { Count: 625 } }
+[D] 29 :: [Updated     ] Amount: 3, 625 -> 628, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50427, M: 171, S: { Count: 628 } }
+[B] 2E :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50427, M: 171, S: { Count: 628 } }
+[1] 2D :: [Concurrency] Tried 625 -> 629 [4], { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50418, M: 171, S: { Count: 629 } }
+[1] 2D :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50427, M: 171, S: { Count: 628 } }
+[1] 2D :: [Concurrency] Tried 628 -> 632 [4], { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50427, M: 172, S: { Count: 632 } }
+[B] 2E :: [Updated     ] Amount: 14, 628 -> 642, { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50438, M: 175, S: { Count: 642 } }
+[1] 2D :: [READ        ] { Id: agg_06, V: 6, E: True, C: 5e67951e340bc14d68e50438, M: 175, S: { Count: 642 } }
+[1] 2D :: [Split       ] Amount: 4, 642 -> 646, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5044d, M: 176, S: { Count: 646 } }
+[2] 2B :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5044d, M: 176, S: { Count: 646 } }
+[E] 31 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5044d, M: 176, S: { Count: 646 } }
+[2] 2B :: [Concurrency] Tried 646 -> 658 [12], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5044d, M: 180, S: { Count: 658 } }
+[F] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 179, S: { Count: 659 } }
+[E] 31 :: [Updated     ] Amount: 13, 646 -> 659, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 179, S: { Count: 659 } }
+[2] 2B :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 179, S: { Count: 659 } }
+[A] 27 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 179, S: { Count: 659 } }
+[2] 2B :: [Concurrency] Tried 659 -> 671 [12], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 183, S: { Count: 671 } }
+[F] 2E :: [Updated     ] Amount: 3, 659 -> 662, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50472, M: 180, S: { Count: 662 } }
+[A] 27 :: [Concurrency] Tried 659 -> 673 [14], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50461, M: 183, S: { Count: 673 } }
+[2] 2B :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50472, M: 180, S: { Count: 662 } }
+[A] 27 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50472, M: 180, S: { Count: 662 } }
+[2] 2B :: [Concurrency] Tried 662 -> 674 [12], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50472, M: 184, S: { Count: 674 } }
+[9] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50480, M: 184, S: { Count: 676 } }
+[A] 27 :: [Updated     ] Amount: 14, 662 -> 676, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50480, M: 184, S: { Count: 676 } }
+[2] 2B :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5048e, M: 185, S: { Count: 681 } }
+[9] 2E :: [Updated     ] Amount: 5, 676 -> 681, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5048e, M: 185, S: { Count: 681 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5048e, M: 185, S: { Count: 681 } }
+[3] 2E :: [Concurrency] Tried 681 -> 687 [6], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5048e, M: 187, S: { Count: 687 } }
+[5] 2C :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50493, M: 189, S: { Count: 693 } }
+[2] 2B :: [Updated     ] Amount: 12, 681 -> 693, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50493, M: 189, S: { Count: 693 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50493, M: 189, S: { Count: 693 } }
+[3] 2E :: [Concurrency] Tried 693 -> 699 [6], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e50493, M: 191, S: { Count: 699 } }
+[5] 2C :: [Updated     ] Amount: 9, 693 -> 702, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 193, S: { Count: 702 } }
+[D] 2D :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 193, S: { Count: 702 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 193, S: { Count: 702 } }
+[C] 2F :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 193, S: { Count: 702 } }
+[3] 2E :: [Concurrency] Tried 702 -> 708 [6], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 195, S: { Count: 708 } }
+[8] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 196, S: { Count: 713 } }
+[D] 2D :: [Updated     ] Amount: 11, 702 -> 713, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 196, S: { Count: 713 } }
+[9] 30 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 196, S: { Count: 713 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 196, S: { Count: 713 } }
+[C] 2F :: [Concurrency] Tried 702 -> 715 [13], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e5049b, M: 197, S: { Count: 715 } }
+[3] 2E :: [Concurrency] Tried 713 -> 719 [6], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 198, S: { Count: 719 } }
+[9] 30 :: [Concurrency] Tried 713 -> 715 [2], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504a4, M: 197, S: { Count: 715 } }
+[C] 2F :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[8] 2E :: [Updated     ] Amount: 13, 713 -> 726, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[5] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[9] 30 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[F] 32 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 200, S: { Count: 726 } }
+[5] 2E :: [Concurrency] Tried 726 -> 735 [9], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 202, S: { Count: 735 } }
+[9] 30 :: [Concurrency] Tried 726 -> 728 [2], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 201, S: { Count: 728 } }
+[F] 32 :: [Concurrency] Tried 726 -> 737 [11], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 203, S: { Count: 737 } }
+[3] 2E :: [Concurrency] Tried 726 -> 732 [6], { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b0, M: 202, S: { Count: 732 } }
+[C] 2F :: [Updated     ] Amount: 13, 726 -> 739, { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b6, M: 204, S: { Count: 739 } }
+[5] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b6, M: 204, S: { Count: 739 } }
+[9] 30 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b6, M: 204, S: { Count: 739 } }
+[F] 32 :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b6, M: 204, S: { Count: 739 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 7, E: True, C: 5e67951e340bc14d68e504b6, M: 204, S: { Count: 739 } }
+[5] 2E :: [Concurrency] Tried 739 -> 748 [9], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504c6, M: 206, S: { Count: 748 } }
+[F] 32 :: [Concurrency] Tried 739 -> 750 [11], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504cd, M: 207, S: { Count: 750 } }
+[3] 2E :: [Concurrency] Tried 739 -> 745 [6], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504d5, M: 206, S: { Count: 745 } }
+[F] 32 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504c9, M: 205, S: { Count: 741 } }
+[5] 2E :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504c9, M: 205, S: { Count: 741 } }
+[9] 30 :: [Split       ] Amount: 2, 739 -> 741, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504c9, M: 205, S: { Count: 741 } }
+[3] 2E :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504dd, M: 208, S: { Count: 752 } }
+[F] 32 :: [Updated     ] Amount: 11, 741 -> 752, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504dd, M: 208, S: { Count: 752 } }
+[5] 2E :: [Concurrency] Tried 741 -> 750 [9], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504c9, M: 207, S: { Count: 750 } }
+[5] 2E :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504e5, M: 210, S: { Count: 758 } }
+[3] 2E :: [Updated     ] Amount: 6, 752 -> 758, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504e5, M: 210, S: { Count: 758 } }
+[3] 2F :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504eb, M: 212, S: { Count: 767 } }
+[5] 2E :: [Updated     ] Amount: 9, 758 -> 767, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504eb, M: 212, S: { Count: 767 } }
+[7] 2D :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504eb, M: 212, S: { Count: 767 } }
+[5] 2F :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504f5, M: 213, S: { Count: 771 } }
+[D] 30 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504f5, M: 213, S: { Count: 771 } }
+[3] 2F :: [Updated     ] Amount: 4, 767 -> 771, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504f5, M: 213, S: { Count: 771 } }
+[7] 2D :: [Concurrency] Tried 767 -> 777 [10], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504eb, M: 215, S: { Count: 777 } }
+[D] 30 :: [Concurrency] Tried 771 -> 785 [14], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504f5, M: 217, S: { Count: 785 } }
+[B] 32 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 214, S: { Count: 776 } }
+[7] 2D :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 214, S: { Count: 776 } }
+[D] 30 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 214, S: { Count: 776 } }
+[5] 2F :: [Updated     ] Amount: 5, 771 -> 776, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 214, S: { Count: 776 } }
+[B] 32 :: [Concurrency] Tried 776 -> 780 [4], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 215, S: { Count: 780 } }
+[D] 30 :: [Concurrency] Tried 776 -> 790 [14], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e504fd, M: 218, S: { Count: 790 } }
+[7] 2D :: [Updated     ] Amount: 10, 776 -> 786, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50508, M: 217, S: { Count: 786 } }
+[D] 30 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50508, M: 217, S: { Count: 786 } }
+[B] 32 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50508, M: 217, S: { Count: 786 } }
+[D] 30 :: [Concurrency] Tried 786 -> 800 [14], { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50508, M: 221, S: { Count: 800 } }
+[D] 30 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50515, M: 218, S: { Count: 790 } }
+[B] 32 :: [Updated     ] Amount: 4, 786 -> 790, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50515, M: 218, S: { Count: 790 } }
+[4] 33 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50525, M: 222, S: { Count: 804 } }
+[4] 33 :: [Updated     ] Amount: 6, 804 -> 810, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50529, M: 224, S: { Count: 810 } }
+[D] 30 :: [*Updated    ] Expected: 804, Actual: 810, { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50529, M: 224, S: { Count: 810 } }
+[B] 34 :: [READ        ] { Id: agg_06, V: 8, E: True, C: 5e67951e340bc14d68e50529, M: 224, S: { Count: 810 } }
+[0] 37 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50542, M: 226, S: { Count: 819 } }
+[B] 34 :: [Split       ] Amount: 9, 810 -> 819, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50542, M: 226, S: { Count: 819 } }
+[0] 37 :: [Updated     ] Amount: 13, 819 -> 832, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50554, M: 229, S: { Count: 832 } }
+[7] 33 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50554, M: 229, S: { Count: 832 } }
+[7] 33 :: [Updated     ] Amount: 2, 832 -> 834, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50569, M: 230, S: { Count: 834 } }
+[5] 34 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50569, M: 230, S: { Count: 834 } }
+[5] 34 :: [Updated     ] Amount: 14, 834 -> 848, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50586, M: 233, S: { Count: 848 } }
+[7] 36 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e50586, M: 233, S: { Count: 848 } }
+[7] 36 :: [Updated     ] Amount: 16, 848 -> 864, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e5059c, M: 237, S: { Count: 864 } }
+[B] 38 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e5059c, M: 237, S: { Count: 864 } }
+[B] 38 :: [Updated     ] Amount: 4, 864 -> 868, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 238, S: { Count: 868 } }
+[D] 34 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 238, S: { Count: 868 } }
+[B] 3A :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 238, S: { Count: 868 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 238, S: { Count: 868 } }
+[B] 3A :: [Concurrency] Tried 868 -> 873 [5], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 239, S: { Count: 873 } }
+[A] 35 :: [Concurrency] Tried 868 -> 877 [9], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505b7, M: 240, S: { Count: 877 } }
+[C] 38 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 242, S: { Count: 882 } }
+[D] 34 :: [Updated     ] Amount: 14, 868 -> 882, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 242, S: { Count: 882 } }
+[B] 3A :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 242, S: { Count: 882 } }
+[9] 37 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 242, S: { Count: 882 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 242, S: { Count: 882 } }
+[C] 38 :: [Updated     ] Amount: 13, 882 -> 895, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505e0, M: 245, S: { Count: 895 } }
+[B] 3A :: [Concurrency] Tried 882 -> 887 [5], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 243, S: { Count: 887 } }
+[9] 37 :: [Concurrency] Tried 882 -> 891 [9], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 245, S: { Count: 891 } }
+[9] 37 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505e0, M: 245, S: { Count: 895 } }
+[B] 3A :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505e0, M: 245, S: { Count: 895 } }
+[A] 35 :: [Concurrency] Tried 882 -> 891 [9], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505cc, M: 244, S: { Count: 891 } }
+[8] 36 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 248, S: { Count: 904 } }
+[9] 37 :: [Updated     ] Amount: 9, 895 -> 904, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 248, S: { Count: 904 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 248, S: { Count: 904 } }
+[2] 3B :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 248, S: { Count: 904 } }
+[A] 35 :: [Concurrency] Tried 904 -> 913 [9], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 250, S: { Count: 913 } }
+[8] 36 :: [Updated     ] Amount: 7, 904 -> 911, { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505f8, M: 250, S: { Count: 911 } }
+[2] 3B :: [Concurrency] Tried 904 -> 912 [8], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505ee, M: 250, S: { Count: 912 } }
+[C] 3A :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505f8, M: 250, S: { Count: 911 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505f8, M: 250, S: { Count: 911 } }
+[2] 3B :: [READ        ] { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505f8, M: 250, S: { Count: 911 } }
+[8] 37 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50603, M: 251, S: { Count: 916 } }
+[B] 3A :: [Concurrency] Tried 895 -> 900 [5], { Id: agg_06, V: 9, E: True, C: 5e67951e340bc14d68e505e0, M: 246, S: { Count: 900 } }
+[B] 3A :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5060e, M: 252, S: { Count: 921 } }
+[C] 3A :: [*Split      ] Expected: 916, Actual: 921, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5060e, M: 252, S: { Count: 921 } }
+[8] 37 :: [Updated     ] Amount: 5, 916 -> 921, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5060e, M: 252, S: { Count: 921 } }
+[A] 35 :: [Concurrency] Tried 911 -> 920 [9], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50608, M: 252, S: { Count: 920 } }
+[B] 3A :: [Updated     ] Amount: 5, 921 -> 926, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50614, M: 253, S: { Count: 926 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50614, M: 253, S: { Count: 926 } }
+[6] 46 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50614, M: 253, S: { Count: 926 } }
+[A] 35 :: [Concurrency] Tried 926 -> 935 [9], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50614, M: 255, S: { Count: 935 } }
+[2] 3B :: [Concurrency] Tried 911 -> 919 [8], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5060a, M: 252, S: { Count: 919 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 254, S: { Count: 928 } }
+[6] 46 :: [Updated     ] Amount: 2, 926 -> 928, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 254, S: { Count: 928 } }
+[2] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 254, S: { Count: 928 } }
+[6] 47 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 254, S: { Count: 928 } }
+[2] 3B :: [Concurrency] Tried 928 -> 936 [8], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 256, S: { Count: 936 } }
+[A] 35 :: [Concurrency] Tried 928 -> 937 [9], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50621, M: 256, S: { Count: 937 } }
+[6] 47 :: [Updated     ] Amount: 5, 928 -> 933, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5062e, M: 255, S: { Count: 933 } }
+[A] 35 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5062e, M: 255, S: { Count: 933 } }
+[2] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5062e, M: 255, S: { Count: 933 } }
+[2] 3B :: [Concurrency] Tried 933 -> 941 [8], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5062e, M: 257, S: { Count: 941 } }
+[2] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5063d, M: 257, S: { Count: 942 } }
+[2] 3B :: [Updated     ] Amount: 8, 942 -> 950, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50649, M: 259, S: { Count: 950 } }
+[A] 35 :: [Updated     ] Amount: 9, 933 -> 942, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5063d, M: 257, S: { Count: 942 } }
+[A] 37 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e50649, M: 259, S: { Count: 950 } }
+[A] 37 :: [Updated     ] Amount: 11, 950 -> 961, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5066c, M: 262, S: { Count: 961 } }
+[4] 40 :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5066c, M: 262, S: { Count: 961 } }
+[4] 40 :: [Updated     ] Amount: 13, 961 -> 974, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 266, S: { Count: 974 } }
+[F] 3F :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 266, S: { Count: 974 } }
+[5] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 266, S: { Count: 974 } }
+[D] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 266, S: { Count: 974 } }
+[D] 3B :: [Concurrency] Tried 974 -> 983 [9], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 268, S: { Count: 983 } }
+[5] 3B :: [Updated     ] Amount: 10, 974 -> 984, { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e506ac, M: 269, S: { Count: 984 } }
+[D] 3B :: [READ        ] { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e506ac, M: 269, S: { Count: 984 } }
+[F] 3F :: [Concurrency] Tried 974 -> 984 [10], { Id: agg_06, V: 10, E: True, C: 5e67951e340bc14d68e5068b, M: 268, S: { Count: 984 } }
+[F] 3F :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c0, M: 271, S: { Count: 993 } }
+[E] 44 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c0, M: 271, S: { Count: 993 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c0, M: 271, S: { Count: 993 } }
+[E] 44 :: [Concurrency] Tried 993 -> 1005 [12], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c0, M: 275, S: { Count: 1005 } }
+[3] 42 :: [Concurrency] Tried 993 -> 1010 [17], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c0, M: 275, S: { Count: 1010 } }
+[F] 3F :: [Updated     ] Amount: 10, 993 -> 1003, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 273, S: { Count: 1003 } }
+[E] 44 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 273, S: { Count: 1003 } }
+[D] 3B :: [*Split      ] Expected: 993, Actual: 1003, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 273, S: { Count: 1003 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 273, S: { Count: 1003 } }
+[D] 3C :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 273, S: { Count: 1003 } }
+[3] 42 :: [Concurrency] Tried 1003 -> 1020 [17], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 277, S: { Count: 1020 } }
+[E] 44 :: [Updated     ] Amount: 12, 1003 -> 1015, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 277, S: { Count: 1015 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 277, S: { Count: 1015 } }
+[D] 3C :: [Concurrency] Tried 1003 -> 1016 [13], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506c3, M: 277, S: { Count: 1016 } }
+[D] 3C :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 277, S: { Count: 1015 } }
+[A] 3A :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 277, S: { Count: 1015 } }
+[2] 3F :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 277, S: { Count: 1015 } }
+[A] 3A :: [Concurrency] Tried 1015 -> 1022 [7], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 279, S: { Count: 1022 } }
+[2] 3F :: [Concurrency] Tried 1015 -> 1023 [8], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 279, S: { Count: 1023 } }
+[D] 3C :: [Updated     ] Amount: 13, 1015 -> 1028, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 281, S: { Count: 1028 } }
+[A] 3A :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 281, S: { Count: 1028 } }
+[2] 3F :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 281, S: { Count: 1028 } }
+[C] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 281, S: { Count: 1028 } }
+[F] 41 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 281, S: { Count: 1028 } }
+[3] 42 :: [Concurrency] Tried 1015 -> 1032 [17], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506d0, M: 281, S: { Count: 1032 } }
+[2] 3F :: [Concurrency] Tried 1028 -> 1036 [8], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 283, S: { Count: 1036 } }
+[C] 46 :: [Concurrency] Tried 1028 -> 1040 [12], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 284, S: { Count: 1040 } }
+[F] 41 :: [Concurrency] Tried 1028 -> 1038 [10], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506e9, M: 283, S: { Count: 1038 } }
+[2] 3F :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 283, S: { Count: 1035 } }
+[C] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 283, S: { Count: 1035 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 283, S: { Count: 1035 } }
+[A] 3A :: [Updated     ] Amount: 7, 1028 -> 1035, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 283, S: { Count: 1035 } }
+[F] 41 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 283, S: { Count: 1035 } }
+[C] 46 :: [Concurrency] Tried 1035 -> 1047 [12], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 286, S: { Count: 1047 } }
+[3] 42 :: [Concurrency] Tried 1035 -> 1052 [17], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 287, S: { Count: 1052 } }
+[2] 3F :: [Updated     ] Amount: 8, 1035 -> 1043, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 285, S: { Count: 1043 } }
+[F] 41 :: [Concurrency] Tried 1035 -> 1045 [10], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e506f3, M: 285, S: { Count: 1045 } }
+[E] 47 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 285, S: { Count: 1043 } }
+[C] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 285, S: { Count: 1043 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 285, S: { Count: 1043 } }
+[F] 41 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 285, S: { Count: 1043 } }
+[3] 42 :: [Concurrency] Tried 1043 -> 1060 [17], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 289, S: { Count: 1060 } }
+[3] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50709, M: 289, S: { Count: 1056 } }
+[F] 41 :: [Concurrency] Tried 1043 -> 1053 [10], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 287, S: { Count: 1053 } }
+[C] 46 :: [Concurrency] Tried 1043 -> 1055 [12], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50700, M: 288, S: { Count: 1055 } }
+[3] 42 :: [Updated     ] Amount: 17, 1056 -> 1073, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50714, M: 293, S: { Count: 1073 } }
+[F] 41 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50714, M: 293, S: { Count: 1073 } }
+[E] 47 :: [*Updated    ] Expected: 1056, Actual: 1073, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50714, M: 293, S: { Count: 1073 } }
+[F] 41 :: [Updated     ] Amount: 10, 1073 -> 1083, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5071b, M: 295, S: { Count: 1083 } }
+[C] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50714, M: 293, S: { Count: 1073 } }
+[F] 42 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5071b, M: 295, S: { Count: 1083 } }
+[B] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5071b, M: 295, S: { Count: 1083 } }
+[C] 46 :: [Concurrency] Tried 1073 -> 1085 [12], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e50714, M: 296, S: { Count: 1085 } }
+[C] 46 :: [READ        ] { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5072f, M: 298, S: { Count: 1095 } }
+[F] 42 :: [Updated     ] Amount: 12, 1083 -> 1095, { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5072f, M: 298, S: { Count: 1095 } }
+[B] 46 :: [Concurrency] Tried 1083 -> 1086 [3], { Id: agg_06, V: 11, E: True, C: 5e67951e340bc14d68e5071b, M: 296, S: { Count: 1086 } }
+[B] 46 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50737, M: 301, S: { Count: 1107 } }
+[C] 46 :: [Split       ] Amount: 12, 1095 -> 1107, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50737, M: 301, S: { Count: 1107 } }
+[B] 46 :: [Updated     ] Amount: 3, 1107 -> 1110, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50743, M: 302, S: { Count: 1110 } }
+[9] 43 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50743, M: 302, S: { Count: 1110 } }
+[9] 43 :: [Updated     ] Amount: 10, 1110 -> 1120, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50760, M: 306, S: { Count: 1120 } }
+[6] 53 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50760, M: 306, S: { Count: 1120 } }
+[6] 53 :: [Updated     ] Amount: 14, 1120 -> 1134, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50769, M: 310, S: { Count: 1134 } }
+[8] 43 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50769, M: 310, S: { Count: 1134 } }
+[2] 46 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50787, M: 313, S: { Count: 1145 } }
+[C] 4A :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50787, M: 313, S: { Count: 1145 } }
+[8] 43 :: [Updated     ] Amount: 11, 1134 -> 1145, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50787, M: 313, S: { Count: 1145 } }
+[C] 4A :: [Concurrency] Tried 1145 -> 1151 [6], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e50787, M: 315, S: { Count: 1151 } }
+[2] 46 :: [Updated     ] Amount: 11, 1145 -> 1156, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5078f, M: 316, S: { Count: 1156 } }
+[C] 4A :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5078f, M: 316, S: { Count: 1156 } }
+[A] 41 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5078f, M: 316, S: { Count: 1156 } }
+[C] 4A :: [Updated     ] Amount: 6, 1156 -> 1162, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 318, S: { Count: 1162 } }
+[A] 41 :: [Concurrency] Tried 1156 -> 1158 [2], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5078f, M: 317, S: { Count: 1158 } }
+[4] 4A :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 318, S: { Count: 1162 } }
+[A] 41 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 318, S: { Count: 1162 } }
+[5] 46 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 318, S: { Count: 1162 } }
+[A] 41 :: [Concurrency] Tried 1162 -> 1164 [2], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 319, S: { Count: 1164 } }
+[5] 46 :: [Concurrency] Tried 1162 -> 1167 [5], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e5079c, M: 319, S: { Count: 1167 } }
+[4] 4A :: [Updated     ] Amount: 12, 1162 -> 1174, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507a6, M: 321, S: { Count: 1174 } }
+[A] 41 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507a6, M: 321, S: { Count: 1174 } }
+[2] 49 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 322, S: { Count: 1176 } }
+[A] 41 :: [Updated     ] Amount: 2, 1174 -> 1176, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 322, S: { Count: 1176 } }
+[5] 46 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 322, S: { Count: 1176 } }
+[3] 47 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 322, S: { Count: 1176 } }
+[5] 46 :: [Concurrency] Tried 1176 -> 1181 [5], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 323, S: { Count: 1181 } }
+[3] 47 :: [Concurrency] Tried 1176 -> 1181 [5], { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507bd, M: 323, S: { Count: 1181 } }
+[2] 49 :: [Updated     ] Amount: 9, 1176 -> 1185, { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507c4, M: 325, S: { Count: 1185 } }
+[A] 42 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507c4, M: 325, S: { Count: 1185 } }
+[3] 47 :: [READ        ] { Id: agg_06, V: 12, E: True, C: 5e67951e340bc14d68e507c4, M: 325, S: { Count: 1185 } }
+[5] 46 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507d0, M: 329, S: { Count: 1198 } }
+[3] 47 :: [Concurrency] Tried 1185 -> 1190 [5], { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507d5, M: 326, S: { Count: 1190 } }
+[3] 47 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507da, M: 330, S: { Count: 1203 } }
+[A] 42 :: [*Split      ] Expected: 1198, Actual: 1203, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507da, M: 330, S: { Count: 1203 } }
+[5] 46 :: [Updated     ] Amount: 5, 1198 -> 1203, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507da, M: 330, S: { Count: 1203 } }
+[3] 47 :: [Updated     ] Amount: 5, 1203 -> 1208, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507e7, M: 331, S: { Count: 1208 } }
+[5] 48 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507e7, M: 331, S: { Count: 1208 } }
+[5] 48 :: [Updated     ] Amount: 7, 1208 -> 1215, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507f9, M: 333, S: { Count: 1215 } }
+[3] 49 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e507f9, M: 333, S: { Count: 1215 } }
+[3] 49 :: [Updated     ] Amount: 5, 1215 -> 1220, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50812, M: 334, S: { Count: 1220 } }
+[1] 4B :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50812, M: 334, S: { Count: 1220 } }
+[1] 4B :: [Updated     ] Amount: 8, 1220 -> 1228, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50825, M: 336, S: { Count: 1228 } }
+[8] 4A :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50825, M: 336, S: { Count: 1228 } }
+[8] 4A :: [Updated     ] Amount: 16, 1228 -> 1244, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50831, M: 340, S: { Count: 1244 } }
+[A] 48 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50831, M: 340, S: { Count: 1244 } }
+[A] 48 :: [Updated     ] Amount: 13, 1244 -> 1257, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e5084e, M: 343, S: { Count: 1257 } }
+[9] 4A :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e5084e, M: 343, S: { Count: 1257 } }
+[D] 49 :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50877, M: 346, S: { Count: 1267 } }
+[6] 5A :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50877, M: 346, S: { Count: 1267 } }
+[9] 4A :: [Updated     ] Amount: 10, 1257 -> 1267, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50877, M: 346, S: { Count: 1267 } }
+[6] 5A :: [Concurrency] Tried 1267 -> 1271 [4], { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e50877, M: 347, S: { Count: 1271 } }
+[D] 49 :: [Updated     ] Amount: 16, 1267 -> 1283, { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e5087d, M: 350, S: { Count: 1283 } }
+[6] 5A :: [READ        ] { Id: agg_06, V: 13, E: True, C: 5e67951e340bc14d68e5087d, M: 350, S: { Count: 1283 } }
+[6] 5A :: [Split       ] Amount: 4, 1283 -> 1287, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e5088e, M: 351, S: { Count: 1287 } }
+[5] 4C :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e5088e, M: 351, S: { Count: 1287 } }
+[3] 4F :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508c6, M: 355, S: { Count: 1303 } }
+[5] 4C :: [Updated     ] Amount: 16, 1287 -> 1303, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508c6, M: 355, S: { Count: 1303 } }
+[3] 4F :: [Updated     ] Amount: 7, 1303 -> 1310, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ca, M: 357, S: { Count: 1310 } }
+[3] 50 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ca, M: 357, S: { Count: 1310 } }
+[B] 51 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508db, M: 361, S: { Count: 1327 } }
+[3] 50 :: [Updated     ] Amount: 17, 1310 -> 1327, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508db, M: 361, S: { Count: 1327 } }
+[B] 51 :: [Updated     ] Amount: 18, 1327 -> 1345, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508e3, M: 365, S: { Count: 1345 } }
+[6] 5D :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508e3, M: 365, S: { Count: 1345 } }
+[6] 5D :: [Updated     ] Amount: 10, 1345 -> 1355, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 368, S: { Count: 1355 } }
+[D] 4F :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 368, S: { Count: 1355 } }
+[5] 4F :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 368, S: { Count: 1355 } }
+[A] 4C :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 368, S: { Count: 1355 } }
+[5] 4F :: [Concurrency] Tried 1355 -> 1365 [10], { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 371, S: { Count: 1365 } }
+[D] 4F :: [Updated     ] Amount: 12, 1355 -> 1367, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508f9, M: 372, S: { Count: 1367 } }
+[5] 4F :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508f9, M: 372, S: { Count: 1367 } }
+[A] 4C :: [Concurrency] Tried 1355 -> 1367 [12], { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e508ed, M: 371, S: { Count: 1367 } }
+[5] 4F :: [Updated     ] Amount: 10, 1367 -> 1377, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50909, M: 375, S: { Count: 1377 } }
+[A] 4C :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50909, M: 375, S: { Count: 1377 } }
+[6] 5F :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50918, M: 378, S: { Count: 1389 } }
+[A] 4C :: [Updated     ] Amount: 12, 1377 -> 1389, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50918, M: 378, S: { Count: 1389 } }
+[3] 54 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50918, M: 378, S: { Count: 1389 } }
+[6] 5F :: [Updated     ] Amount: 16, 1389 -> 1405, { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50922, M: 382, S: { Count: 1405 } }
+[4] 54 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50922, M: 382, S: { Count: 1405 } }
+[3] 54 :: [Concurrency] Tried 1389 -> 1391 [2], { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50918, M: 379, S: { Count: 1391 } }
+[6] 60 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50922, M: 382, S: { Count: 1405 } }
+[3] 54 :: [READ        ] { Id: agg_06, V: 14, E: True, C: 5e67951e340bc14d68e50922, M: 382, S: { Count: 1405 } }
+[F] 53 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 384, S: { Count: 1411 } }
+[3] 54 :: [Concurrency] Tried 1405 -> 1407 [2], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50934, M: 383, S: { Count: 1407 } }
+[4] 54 :: [Split       ] Amount: 6, 1405 -> 1411, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 384, S: { Count: 1411 } }
+[B] 55 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 384, S: { Count: 1411 } }
+[3] 54 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 384, S: { Count: 1411 } }
+[6] 60 :: [Concurrency] Tried 1405 -> 1410 [5], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50932, M: 383, S: { Count: 1410 } }
+[B] 55 :: [Concurrency] Tried 1411 -> 1414 [3], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 385, S: { Count: 1414 } }
+[6] 60 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 388, S: { Count: 1421 } }
+[F] 53 :: [Updated     ] Amount: 10, 1411 -> 1421, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 388, S: { Count: 1421 } }
+[3] 54 :: [Concurrency] Tried 1411 -> 1413 [2], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5092d, M: 385, S: { Count: 1413 } }
+[B] 55 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 388, S: { Count: 1421 } }
+[3] 54 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 388, S: { Count: 1421 } }
+[3] 54 :: [Concurrency] Tried 1421 -> 1423 [2], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 389, S: { Count: 1423 } }
+[B] 55 :: [Updated     ] Amount: 3, 1421 -> 1424, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50948, M: 389, S: { Count: 1424 } }
+[3] 54 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50948, M: 389, S: { Count: 1424 } }
+[D] 53 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50948, M: 389, S: { Count: 1424 } }
+[6] 60 :: [Concurrency] Tried 1421 -> 1426 [5], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5093b, M: 389, S: { Count: 1426 } }
+[3] 54 :: [Updated     ] Amount: 2, 1424 -> 1426, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50951, M: 390, S: { Count: 1426 } }
+[D] 53 :: [Concurrency] Tried 1424 -> 1435 [11], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50948, M: 393, S: { Count: 1435 } }
+[D] 53 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50951, M: 390, S: { Count: 1426 } }
+[6] 60 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50951, M: 390, S: { Count: 1426 } }
+[6] 60 :: [Concurrency] Tried 1426 -> 1431 [5], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50951, M: 391, S: { Count: 1431 } }
+[B] 57 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5095b, M: 394, S: { Count: 1437 } }
+[6] 60 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5095b, M: 394, S: { Count: 1437 } }
+[6] 60 :: [Concurrency] Tried 1437 -> 1442 [5], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5095b, M: 395, S: { Count: 1442 } }
+[6] 60 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50968, M: 395, S: { Count: 1439 } }
+[D] 53 :: [*Updated    ] Expected: 1437, Actual: 1439, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50968, M: 395, S: { Count: 1439 } }
+[B] 57 :: [*Updated    ] Expected: 1439, Actual: 1444, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 396, S: { Count: 1444 } }
+[6] 60 :: [Updated     ] Amount: 5, 1439 -> 1444, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 396, S: { Count: 1444 } }
+[0] 54 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 396, S: { Count: 1444 } }
+[F] 56 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 396, S: { Count: 1444 } }
+[B] 58 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 396, S: { Count: 1444 } }
+[B] 58 :: [Concurrency] Tried 1444 -> 1457 [13], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 399, S: { Count: 1457 } }
+[B] 58 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5097f, M: 398, S: { Count: 1451 } }
+[F] 56 :: [Concurrency] Tried 1444 -> 1461 [17], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e50972, M: 400, S: { Count: 1461 } }
+[0] 54 :: [Updated     ] Amount: 7, 1444 -> 1451, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5097f, M: 398, S: { Count: 1451 } }
+[B] 58 :: [Updated     ] Amount: 13, 1451 -> 1464, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5098c, M: 401, S: { Count: 1464 } }
+[F] 56 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5098c, M: 401, S: { Count: 1464 } }
+[E] 5D :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5098c, M: 401, S: { Count: 1464 } }
+[4] 59 :: [READ        ] { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e509a0, M: 405, S: { Count: 1481 } }
+[E] 5D :: [Concurrency] Tried 1464 -> 1466 [2], { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e5098c, M: 402, S: { Count: 1466 } }
+[F] 56 :: [Updated     ] Amount: 17, 1464 -> 1481, { Id: agg_06, V: 15, E: True, C: 5e67951e340bc14d68e509a0, M: 405, S: { Count: 1481 } }
+[E] 5D :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509a7, M: 406, S: { Count: 1485 } }
+[4] 59 :: [Split       ] Amount: 4, 1481 -> 1485, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509a7, M: 406, S: { Count: 1485 } }
+[E] 5D :: [Updated     ] Amount: 2, 1485 -> 1487, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509b8, M: 407, S: { Count: 1487 } }
+[8] 5B :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509b8, M: 407, S: { Count: 1487 } }
+[8] 5B :: [Updated     ] Amount: 10, 1487 -> 1497, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509c8, M: 410, S: { Count: 1497 } }
+[1] 5A :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509c8, M: 410, S: { Count: 1497 } }
+[1] 5A :: [Updated     ] Amount: 5, 1497 -> 1502, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509ea, M: 411, S: { Count: 1502 } }
+[5] 59 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e509ea, M: 411, S: { Count: 1502 } }
+[5] 59 :: [Updated     ] Amount: 3, 1502 -> 1505, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a21, M: 412, S: { Count: 1505 } }
+[6] 66 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a21, M: 412, S: { Count: 1505 } }
+[6] 66 :: [Updated     ] Amount: 7, 1505 -> 1512, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a45, M: 414, S: { Count: 1512 } }
+[C] 5B :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a45, M: 414, S: { Count: 1512 } }
+[B] 60 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a45, M: 414, S: { Count: 1512 } }
+[B] 60 :: [Concurrency] Tried 1512 -> 1516 [4], { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a45, M: 415, S: { Count: 1516 } }
+[E] 61 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a6b, M: 417, S: { Count: 1523 } }
+[C] 5B :: [Updated     ] Amount: 11, 1512 -> 1523, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a6b, M: 417, S: { Count: 1523 } }
+[B] 60 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a6b, M: 417, S: { Count: 1523 } }
+[7] 5B :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a7f, M: 418, S: { Count: 1527 } }
+[B] 60 :: [Updated     ] Amount: 4, 1523 -> 1527, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a7f, M: 418, S: { Count: 1527 } }
+[E] 61 :: [Concurrency] Tried 1523 -> 1527 [4], { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a6b, M: 419, S: { Count: 1527 } }
+[E] 61 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a7f, M: 418, S: { Count: 1527 } }
+[7] 5B :: [Updated     ] Amount: 4, 1527 -> 1531, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a83, M: 419, S: { Count: 1531 } }
+[E] 61 :: [Concurrency] Tried 1527 -> 1531 [4], { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a7f, M: 420, S: { Count: 1531 } }
+[E] 61 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a83, M: 419, S: { Count: 1531 } }
+[E] 61 :: [Updated     ] Amount: 4, 1531 -> 1535, { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a9c, M: 421, S: { Count: 1535 } }
+[A] 58 :: [READ        ] { Id: agg_06, V: 16, E: True, C: 5e67951e340bc14d68e50a9c, M: 421, S: { Count: 1535 } }
+[A] 58 :: [Split       ] Amount: 6, 1535 -> 1541, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ac0, M: 423, S: { Count: 1541 } }
+[8] 67 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ac0, M: 423, S: { Count: 1541 } }
+[7] 5D :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ac0, M: 423, S: { Count: 1541 } }
+[7] 5D :: [Concurrency] Tried 1541 -> 1555 [14], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ac0, M: 427, S: { Count: 1555 } }
+[8] 67 :: [Updated     ] Amount: 13, 1541 -> 1554, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ad6, M: 427, S: { Count: 1554 } }
+[7] 5D :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ad6, M: 427, S: { Count: 1554 } }
+[7] 5D :: [Updated     ] Amount: 14, 1554 -> 1568, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ae6, M: 431, S: { Count: 1568 } }
+[4] 64 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ae6, M: 431, S: { Count: 1568 } }
+[B] 65 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ae6, M: 431, S: { Count: 1568 } }
+[4] 64 :: [Updated     ] Amount: 5, 1568 -> 1573, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50af8, M: 433, S: { Count: 1573 } }
+[B] 65 :: [Concurrency] Tried 1568 -> 1581 [13], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50ae6, M: 435, S: { Count: 1581 } }
+[B] 65 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50af8, M: 433, S: { Count: 1573 } }
+[D] 60 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b0f, M: 437, S: { Count: 1586 } }
+[B] 65 :: [Updated     ] Amount: 13, 1573 -> 1586, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b0f, M: 437, S: { Count: 1586 } }
+[D] 60 :: [Updated     ] Amount: 6, 1586 -> 1592, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b1b, M: 439, S: { Count: 1592 } }
+[2] 6E :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b1b, M: 439, S: { Count: 1592 } }
+[0] 60 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 443, S: { Count: 1604 } }
+[2] 6E :: [Updated     ] Amount: 12, 1592 -> 1604, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 443, S: { Count: 1604 } }
+[7] 60 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 443, S: { Count: 1604 } }
+[1] 63 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 443, S: { Count: 1604 } }
+[7] 60 :: [Concurrency] Tried 1604 -> 1608 [4], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 444, S: { Count: 1608 } }
+[0] 60 :: [Updated     ] Amount: 14, 1604 -> 1618, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b32, M: 447, S: { Count: 1618 } }
+[1] 63 :: [Concurrency] Tried 1604 -> 1621 [17], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b2b, M: 447, S: { Count: 1621 } }
+[7] 60 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b32, M: 447, S: { Count: 1618 } }
+[1] 63 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b32, M: 447, S: { Count: 1618 } }
+[1] 63 :: [Concurrency] Tried 1618 -> 1635 [17], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b32, M: 451, S: { Count: 1635 } }
+[7] 60 :: [Updated     ] Amount: 4, 1618 -> 1622, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b3f, M: 448, S: { Count: 1622 } }
+[1] 63 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b3f, M: 448, S: { Count: 1622 } }
+[7] 61 :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b3f, M: 448, S: { Count: 1622 } }
+[7] 61 :: [Concurrency] Tried 1622 -> 1632 [10], { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b3f, M: 452, S: { Count: 1632 } }
+[1] 63 :: [Updated     ] Amount: 17, 1622 -> 1639, { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b53, M: 452, S: { Count: 1639 } }
+[6] 6D :: [READ        ] { Id: agg_06, V: 17, E: True, C: 5e67951f340bc14d68e50b53, M: 452, S: { Count: 1639 } }
+[9] 61 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b5d, M: 453, S: { Count: 1643 } }
+[6] 6D :: [Split       ] Amount: 4, 1639 -> 1643, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b5d, M: 453, S: { Count: 1643 } }
+[7] 61 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b5d, M: 453, S: { Count: 1643 } }
+[7] 61 :: [Concurrency] Tried 1643 -> 1653 [10], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b5d, M: 457, S: { Count: 1653 } }
+[9] 61 :: [Updated     ] Amount: 16, 1643 -> 1659, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 457, S: { Count: 1659 } }
+[0] 63 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 457, S: { Count: 1659 } }
+[9] 62 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 457, S: { Count: 1659 } }
+[E] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 457, S: { Count: 1659 } }
+[7] 61 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 457, S: { Count: 1659 } }
+[9] 62 :: [Concurrency] Tried 1659 -> 1661 [2], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 458, S: { Count: 1661 } }
+[E] 6A :: [Concurrency] Tried 1659 -> 1674 [15], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 461, S: { Count: 1674 } }
+[7] 61 :: [Concurrency] Tried 1659 -> 1669 [10], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b6b, M: 461, S: { Count: 1669 } }
+[9] 62 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 459, S: { Count: 1668 } }
+[0] 63 :: [Updated     ] Amount: 9, 1659 -> 1668, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 459, S: { Count: 1668 } }
+[E] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 459, S: { Count: 1668 } }
+[7] 61 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 459, S: { Count: 1668 } }
+[E] 6A :: [Concurrency] Tried 1668 -> 1683 [15], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 463, S: { Count: 1683 } }
+[7] 61 :: [Concurrency] Tried 1668 -> 1678 [10], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b79, M: 463, S: { Count: 1678 } }
+[B] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 460, S: { Count: 1670 } }
+[9] 62 :: [Updated     ] Amount: 2, 1668 -> 1670, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 460, S: { Count: 1670 } }
+[7] 61 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 460, S: { Count: 1670 } }
+[9] 63 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 460, S: { Count: 1670 } }
+[B] 6A :: [Concurrency] Tried 1670 -> 1675 [5], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 462, S: { Count: 1675 } }
+[9] 63 :: [Concurrency] Tried 1670 -> 1682 [12], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b84, M: 464, S: { Count: 1682 } }
+[E] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b91, M: 464, S: { Count: 1680 } }
+[B] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b91, M: 464, S: { Count: 1680 } }
+[7] 61 :: [Updated     ] Amount: 10, 1670 -> 1680, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b91, M: 464, S: { Count: 1680 } }
+[9] 63 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b9d, M: 468, S: { Count: 1695 } }
+[B] 6A :: [Concurrency] Tried 1680 -> 1685 [5], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b91, M: 466, S: { Count: 1685 } }
+[5] 64 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b9d, M: 468, S: { Count: 1695 } }
+[E] 6A :: [*Updated    ] Expected: 1695, Actual: 1707, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50ba2, M: 472, S: { Count: 1707 } }
+[B] 6A :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50ba2, M: 472, S: { Count: 1707 } }
+[5] 64 :: [Concurrency] Tried 1695 -> 1711 [16], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50b9d, M: 472, S: { Count: 1711 } }
+[9] 63 :: [Updated     ] Amount: 12, 1695 -> 1707, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50ba2, M: 472, S: { Count: 1707 } }
+[5] 64 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bab, M: 474, S: { Count: 1712 } }
+[9] 64 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bab, M: 474, S: { Count: 1712 } }
+[B] 6A :: [Updated     ] Amount: 5, 1707 -> 1712, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bab, M: 474, S: { Count: 1712 } }
+[9] 64 :: [Concurrency] Tried 1712 -> 1714 [2], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bab, M: 475, S: { Count: 1714 } }
+[5] 64 :: [Updated     ] Amount: 16, 1712 -> 1728, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bb8, M: 478, S: { Count: 1728 } }
+[9] 64 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bb8, M: 478, S: { Count: 1728 } }
+[E] 6C :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bb8, M: 478, S: { Count: 1728 } }
+[9] 64 :: [Concurrency] Tried 1728 -> 1730 [2], { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bb8, M: 479, S: { Count: 1730 } }
+[9] 64 :: [READ        ] { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bc7, M: 482, S: { Count: 1742 } }
+[E] 6C :: [Updated     ] Amount: 14, 1728 -> 1742, { Id: agg_06, V: 18, E: True, C: 5e67951f340bc14d68e50bc7, M: 482, S: { Count: 1742 } }
+[9] 64 :: [Split       ] Amount: 2, 1742 -> 1744, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 483, S: { Count: 1744 } }
+[B] 6E :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 483, S: { Count: 1744 } }
+[8] 6F :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 483, S: { Count: 1744 } }
+[E] 70 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 483, S: { Count: 1744 } }
+[4] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 483, S: { Count: 1744 } }
+[8] 6F :: [Concurrency] Tried 1744 -> 1754 [10], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 487, S: { Count: 1754 } }
+[E] 70 :: [Concurrency] Tried 1744 -> 1756 [12], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 486, S: { Count: 1756 } }
+[4] 72 :: [Concurrency] Tried 1744 -> 1761 [17], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50bd5, M: 487, S: { Count: 1761 } }
+[8] 6F :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c38, M: 484, S: { Count: 1747 } }
+[4] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c38, M: 484, S: { Count: 1747 } }
+[B] 6E :: [Updated     ] Amount: 3, 1744 -> 1747, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c38, M: 484, S: { Count: 1747 } }
+[8] 6F :: [Updated     ] Amount: 10, 1747 -> 1757, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c45, M: 488, S: { Count: 1757 } }
+[4] 72 :: [Concurrency] Tried 1747 -> 1764 [17], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c38, M: 488, S: { Count: 1764 } }
+[E] 70 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c45, M: 488, S: { Count: 1757 } }
+[4] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c45, M: 488, S: { Count: 1757 } }
+[4] 72 :: [Concurrency] Tried 1757 -> 1774 [17], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c45, M: 492, S: { Count: 1774 } }
+[6] 77 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c5d, M: 491, S: { Count: 1769 } }
+[4] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c5d, M: 491, S: { Count: 1769 } }
+[E] 70 :: [Updated     ] Amount: 12, 1757 -> 1769, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c5d, M: 491, S: { Count: 1769 } }
+[4] 72 :: [Concurrency] Tried 1769 -> 1786 [17], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c5d, M: 495, S: { Count: 1786 } }
+[6] 77 :: [Updated     ] Amount: 5, 1769 -> 1774, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c6b, M: 492, S: { Count: 1774 } }
+[4] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c6b, M: 492, S: { Count: 1774 } }
+[7] 6A :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c6b, M: 492, S: { Count: 1774 } }
+[4] 72 :: [Updated     ] Amount: 17, 1774 -> 1791, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c79, M: 496, S: { Count: 1791 } }
+[7] 6A :: [Concurrency] Tried 1774 -> 1781 [7], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c6b, M: 495, S: { Count: 1781 } }
+[7] 6A :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c79, M: 496, S: { Count: 1791 } }
+[C] 71 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c79, M: 496, S: { Count: 1791 } }
+[B] 72 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c96, M: 499, S: { Count: 1798 } }
+[7] 6A :: [Updated     ] Amount: 7, 1791 -> 1798, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c96, M: 499, S: { Count: 1798 } }
+[C] 71 :: [Concurrency] Tried 1791 -> 1805 [14], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50c79, M: 500, S: { Count: 1805 } }
+[D] 6E :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50ca1, M: 501, S: { Count: 1807 } }
+[B] 72 :: [Updated     ] Amount: 9, 1798 -> 1807, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50ca1, M: 501, S: { Count: 1807 } }
+[C] 71 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50ca1, M: 501, S: { Count: 1807 } }
+[C] 71 :: [Concurrency] Tried 1807 -> 1821 [14], { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50ca1, M: 505, S: { Count: 1821 } }
+[D] 6E :: [Updated     ] Amount: 20, 1807 -> 1827, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50cae, M: 505, S: { Count: 1827 } }
+[C] 71 :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50cae, M: 505, S: { Count: 1827 } }
+[6] 7B :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50cc0, M: 509, S: { Count: 1841 } }
+[7] 6D :: [READ        ] { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50cc0, M: 509, S: { Count: 1841 } }
+[C] 71 :: [Updated     ] Amount: 14, 1827 -> 1841, { Id: agg_06, V: 19, E: True, C: 5e67951f340bc14d68e50cc0, M: 509, S: { Count: 1841 } }
+[7] 6D :: [Concurrency] Tried 1841 -> 1856 [15], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50ccf, M: 513, S: { Count: 1856 } }
+[7] 6D :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50ccd, M: 511, S: { Count: 1846 } }
+[3] 74 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50cde, M: 515, S: { Count: 1861 } }
+[7] 6D :: [Updated     ] Amount: 15, 1846 -> 1861, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50cde, M: 515, S: { Count: 1861 } }
+[6] 7B :: [*Split      ] Expected: 1846, Actual: 1861, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50cde, M: 515, S: { Count: 1861 } }
+[3] 74 :: [Updated     ] Amount: 4, 1861 -> 1865, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50ce7, M: 516, S: { Count: 1865 } }
+[B] 77 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50ce7, M: 516, S: { Count: 1865 } }
+[B] 77 :: [Updated     ] Amount: 4, 1865 -> 1869, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d16, M: 517, S: { Count: 1869 } }
+[8] 76 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d16, M: 517, S: { Count: 1869 } }
+[8] 76 :: [Updated     ] Amount: 11, 1869 -> 1880, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d25, M: 520, S: { Count: 1880 } }
+[2] 83 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d25, M: 520, S: { Count: 1880 } }
+[5] 72 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d25, M: 520, S: { Count: 1880 } }
+[5] 72 :: [Concurrency] Tried 1880 -> 1890 [10], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d25, M: 523, S: { Count: 1890 } }
+[8] 78 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d3e, M: 521, S: { Count: 1884 } }
+[5] 72 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d3e, M: 521, S: { Count: 1884 } }
+[2] 83 :: [Updated     ] Amount: 4, 1880 -> 1884, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d3e, M: 521, S: { Count: 1884 } }
+[5] 72 :: [Concurrency] Tried 1884 -> 1894 [10], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d3e, M: 524, S: { Count: 1894 } }
+[8] 78 :: [Updated     ] Amount: 10, 1884 -> 1894, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d4d, M: 523, S: { Count: 1894 } }
+[5] 72 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d4d, M: 523, S: { Count: 1894 } }
+[A] 6A :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d4d, M: 523, S: { Count: 1894 } }
+[A] 6A :: [Concurrency] Tried 1894 -> 1900 [6], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d4d, M: 525, S: { Count: 1900 } }
+[5] 72 :: [Updated     ] Amount: 10, 1894 -> 1904, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d63, M: 526, S: { Count: 1904 } }
+[A] 6A :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d63, M: 526, S: { Count: 1904 } }
+[C] 77 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d63, M: 526, S: { Count: 1904 } }
+[A] 6A :: [Updated     ] Amount: 6, 1904 -> 1910, { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d76, M: 528, S: { Count: 1910 } }
+[C] 77 :: [Concurrency] Tried 1904 -> 1907 [3], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d63, M: 527, S: { Count: 1907 } }
+[3] 7C :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d76, M: 528, S: { Count: 1910 } }
+[C] 77 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d76, M: 528, S: { Count: 1910 } }
+[3] 7C :: [Concurrency] Tried 1910 -> 1925 [15], { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d76, M: 532, S: { Count: 1925 } }
+[D] 74 :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d8e, M: 529, S: { Count: 1913 } }
+[3] 7C :: [READ        ] { Id: agg_06, V: 20, E: True, C: 5e67951f340bc14d68e50d8e, M: 529, S: { Count: 1913 } }
+[C] 77 :: [*Updated    ] Expected: 1913, Actual: 1918, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 530, S: { Count: 1918 } }
+[8] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 530, S: { Count: 1918 } }
+[3] 7C :: [Concurrency] Tried 1913 -> 1928 [15], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d99, M: 533, S: { Count: 1928 } }
+[3] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 530, S: { Count: 1918 } }
+[D] 74 :: [Split       ] Amount: 5, 1913 -> 1918, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 530, S: { Count: 1918 } }
+[5] 75 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 530, S: { Count: 1918 } }
+[3] 7C :: [Updated     ] Amount: 15, 1918 -> 1933, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 534, S: { Count: 1933 } }
+[8] 7C :: [Concurrency] Tried 1918 -> 1928 [10], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 532, S: { Count: 1928 } }
+[A] 6C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 534, S: { Count: 1933 } }
+[5] 75 :: [Concurrency] Tried 1918 -> 1922 [4], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50d92, M: 531, S: { Count: 1922 } }
+[8] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 534, S: { Count: 1933 } }
+[E] 76 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 534, S: { Count: 1933 } }
+[8] 7C :: [Concurrency] Tried 1933 -> 1943 [10], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 536, S: { Count: 1943 } }
+[5] 75 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50db0, M: 536, S: { Count: 1941 } }
+[A] 6C :: [Updated     ] Amount: 8, 1933 -> 1941, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50db0, M: 536, S: { Count: 1941 } }
+[E] 76 :: [Concurrency] Tried 1933 -> 1942 [9], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50da6, M: 536, S: { Count: 1942 } }
+[8] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50db0, M: 536, S: { Count: 1941 } }
+[5] 75 :: [Updated     ] Amount: 4, 1941 -> 1945, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 537, S: { Count: 1945 } }
+[8] 7C :: [Concurrency] Tried 1941 -> 1951 [10], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50db0, M: 538, S: { Count: 1951 } }
+[E] 76 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 537, S: { Count: 1945 } }
+[8] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 537, S: { Count: 1945 } }
+[A] 6E :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 537, S: { Count: 1945 } }
+[8] 7C :: [Concurrency] Tried 1945 -> 1955 [10], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 539, S: { Count: 1955 } }
+[E] 76 :: [Updated     ] Amount: 9, 1945 -> 1954, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 539, S: { Count: 1954 } }
+[8] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 539, S: { Count: 1954 } }
+[A] 6E :: [Concurrency] Tried 1945 -> 1948 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dba, M: 538, S: { Count: 1948 } }
+[F] 78 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 539, S: { Count: 1954 } }
+[A] 6E :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 539, S: { Count: 1954 } }
+[F] 78 :: [Concurrency] Tried 1954 -> 1957 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 540, S: { Count: 1957 } }
+[A] 6E :: [Concurrency] Tried 1954 -> 1957 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dc3, M: 540, S: { Count: 1957 } }
+[8] 7C :: [Updated     ] Amount: 10, 1954 -> 1964, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dd9, M: 541, S: { Count: 1964 } }
+[A] 6E :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dd9, M: 541, S: { Count: 1964 } }
+[F] 78 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dd9, M: 541, S: { Count: 1964 } }
+[F] 78 :: [Concurrency] Tried 1964 -> 1967 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dd9, M: 542, S: { Count: 1967 } }
+[A] 6E :: [Updated     ] Amount: 3, 1964 -> 1967, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50de9, M: 542, S: { Count: 1967 } }
+[F] 78 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50de9, M: 542, S: { Count: 1967 } }
+[F] 78 :: [Updated     ] Amount: 3, 1967 -> 1970, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 543, S: { Count: 1970 } }
+[2] 8B :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 543, S: { Count: 1970 } }
+[0] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 543, S: { Count: 1970 } }
+[A] 70 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 543, S: { Count: 1970 } }
+[2] 8B :: [Updated     ] Amount: 13, 1970 -> 1983, { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 547, S: { Count: 1983 } }
+[0] 7C :: [Concurrency] Tried 1970 -> 1973 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 544, S: { Count: 1973 } }
+[9] 6E :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 547, S: { Count: 1983 } }
+[A] 70 :: [Concurrency] Tried 1970 -> 1984 [14], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50dfa, M: 547, S: { Count: 1984 } }
+[0] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 547, S: { Count: 1983 } }
+[A] 70 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 547, S: { Count: 1983 } }
+[0] 7C :: [Concurrency] Tried 1983 -> 1986 [3], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 548, S: { Count: 1986 } }
+[A] 70 :: [Concurrency] Tried 1983 -> 1997 [14], { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e08, M: 551, S: { Count: 1997 } }
+[0] 7C :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e10, M: 550, S: { Count: 1993 } }
+[A] 70 :: [READ        ] { Id: agg_06, V: 21, E: True, C: 5e67951f340bc14d68e50e10, M: 550, S: { Count: 1993 } }
+[A] 70 :: [Concurrency] Tried 1993 -> 2007 [14], { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e28, M: 554, S: { Count: 2007 } }
+[A] 70 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e23, M: 551, S: { Count: 1996 } }
+[9] 6E :: [*Updated    ] Expected: 1993, Actual: 1996, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e23, M: 551, S: { Count: 1996 } }
+[0] 7C :: [*Split      ] Expected: 1996, Actual: 2010, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e34, M: 555, S: { Count: 2010 } }
+[A] 70 :: [Updated     ] Amount: 14, 1996 -> 2010, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e34, M: 555, S: { Count: 2010 } }
+[0] 7D :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e34, M: 555, S: { Count: 2010 } }
+[3] 81 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e34, M: 555, S: { Count: 2010 } }
+[0] 7D :: [Updated     ] Amount: 14, 2010 -> 2024, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e44, M: 558, S: { Count: 2024 } }
+[3] 81 :: [Concurrency] Tried 2010 -> 2022 [12], { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e34, M: 558, S: { Count: 2022 } }
+[B] 84 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e44, M: 558, S: { Count: 2024 } }
+[1] 7D :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e44, M: 558, S: { Count: 2024 } }
+[3] 81 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e55, M: 560, S: { Count: 2032 } }
+[1] 7D :: [Concurrency] Tried 2024 -> 2032 [8], { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e44, M: 560, S: { Count: 2032 } }
+[B] 84 :: [Updated     ] Amount: 8, 2024 -> 2032, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e55, M: 560, S: { Count: 2032 } }
+[1] 7D :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e55, M: 560, S: { Count: 2032 } }
+[3] 81 :: [Updated     ] Amount: 12, 2032 -> 2044, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e5f, M: 563, S: { Count: 2044 } }
+[1] 7D :: [Concurrency] Tried 2032 -> 2040 [8], { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e55, M: 562, S: { Count: 2040 } }
+[1] 7D :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e5f, M: 563, S: { Count: 2044 } }
+[1] 7D :: [Updated     ] Amount: 8, 2044 -> 2052, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e74, M: 565, S: { Count: 2052 } }
+[1] 80 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e74, M: 565, S: { Count: 2052 } }
+[8] 85 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e74, M: 565, S: { Count: 2052 } }
+[1] 80 :: [Updated     ] Amount: 14, 2052 -> 2066, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50eaf, M: 569, S: { Count: 2066 } }
+[8] 85 :: [Concurrency] Tried 2052 -> 2060 [8], { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50e74, M: 568, S: { Count: 2060 } }
+[8] 85 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50eaf, M: 569, S: { Count: 2066 } }
+[8] 85 :: [Updated     ] Amount: 8, 2066 -> 2074, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50ed7, M: 572, S: { Count: 2074 } }
+[B] 89 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50ed7, M: 572, S: { Count: 2074 } }
+[B] 89 :: [Updated     ] Amount: 6, 2074 -> 2080, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50eec, M: 574, S: { Count: 2080 } }
+[4] 8D :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50eec, M: 574, S: { Count: 2080 } }
+[5] 81 :: [READ        ] { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50f01, M: 575, S: { Count: 2084 } }
+[4] 8D :: [Updated     ] Amount: 4, 2080 -> 2084, { Id: agg_06, V: 22, E: True, C: 5e67951f340bc14d68e50f01, M: 575, S: { Count: 2084 } }
+[5] 81 :: [Split       ] Amount: 18, 2084 -> 2102, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f16, M: 579, S: { Count: 2102 } }
+[8] 88 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f16, M: 579, S: { Count: 2102 } }
+[E] 88 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f16, M: 579, S: { Count: 2102 } }
+[8] 88 :: [Updated     ] Amount: 4, 2102 -> 2106, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f3a, M: 580, S: { Count: 2106 } }
+[E] 88 :: [Concurrency] Tried 2102 -> 2111 [9], { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f16, M: 582, S: { Count: 2111 } }
+[E] 88 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f3a, M: 580, S: { Count: 2106 } }
+[E] 88 :: [Updated     ] Amount: 9, 2106 -> 2115, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f4a, M: 583, S: { Count: 2115 } }
+[D] 83 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f4a, M: 583, S: { Count: 2115 } }
+[D] 83 :: [Updated     ] Amount: 5, 2115 -> 2120, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f57, M: 584, S: { Count: 2120 } }
+[F] 85 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f57, M: 584, S: { Count: 2120 } }
+[F] 85 :: [Updated     ] Amount: 3, 2120 -> 2123, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f96, M: 585, S: { Count: 2123 } }
+[D] 87 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50f96, M: 585, S: { Count: 2123 } }
+[D] 87 :: [Updated     ] Amount: 2, 2123 -> 2125, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fad, M: 586, S: { Count: 2125 } }
+[2] 9A :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fad, M: 586, S: { Count: 2125 } }
+[4] 96 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fc4, M: 588, S: { Count: 2132 } }
+[2] 9A :: [Updated     ] Amount: 7, 2125 -> 2132, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fc4, M: 588, S: { Count: 2132 } }
+[4] 96 :: [Updated     ] Amount: 15, 2132 -> 2147, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fce, M: 591, S: { Count: 2147 } }
+[F] 89 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fce, M: 591, S: { Count: 2147 } }
+[3] 8E :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fce, M: 591, S: { Count: 2147 } }
+[8] 8E :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e5101b, M: 593, S: { Count: 2153 } }
+[F] 89 :: [Updated     ] Amount: 6, 2147 -> 2153, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e5101b, M: 593, S: { Count: 2153 } }
+[3] 8E :: [Concurrency] Tried 2147 -> 2155 [8], { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e50fce, M: 593, S: { Count: 2155 } }
+[9] 80 :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e5102a, M: 596, S: { Count: 2163 } }
+[8] 8E :: [Updated     ] Amount: 10, 2153 -> 2163, { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e5102a, M: 596, S: { Count: 2163 } }
+[3] 8E :: [READ        ] { Id: agg_06, V: 23, E: True, C: 5e67951f340bc14d68e5102a, M: 596, S: { Count: 2163 } }
+[3] 8E :: [Concurrency] Tried 2163 -> 2171 [8], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5103b, M: 598, S: { Count: 2171 } }
+[9] 80 :: [Split       ] Amount: 11, 2163 -> 2174, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5102e, M: 599, S: { Count: 2174 } }
+[3] 8E :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5102e, M: 599, S: { Count: 2174 } }
+[3] 8E :: [Updated     ] Amount: 8, 2174 -> 2182, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5104e, M: 601, S: { Count: 2182 } }
+[7] 87 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5104e, M: 601, S: { Count: 2182 } }
+[B] 98 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5104e, M: 601, S: { Count: 2182 } }
+[7] 87 :: [Updated     ] Amount: 7, 2182 -> 2189, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51068, M: 604, S: { Count: 2189 } }
+[B] 98 :: [Concurrency] Tried 2182 -> 2192 [10], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5104e, M: 604, S: { Count: 2192 } }
+[2] A1 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51068, M: 604, S: { Count: 2189 } }
+[B] 98 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51068, M: 604, S: { Count: 2189 } }
+[2] A1 :: [Updated     ] Amount: 18, 2189 -> 2207, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5107f, M: 608, S: { Count: 2207 } }
+[B] 98 :: [Concurrency] Tried 2189 -> 2199 [10], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51068, M: 607, S: { Count: 2199 } }
+[7] 89 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5107f, M: 608, S: { Count: 2207 } }
+[4] 9D :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5107f, M: 608, S: { Count: 2207 } }
+[4] 9D :: [Updated     ] Amount: 18, 2207 -> 2225, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5108c, M: 612, S: { Count: 2225 } }
+[7] 89 :: [Concurrency] Tried 2207 -> 2223 [16], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5107f, M: 612, S: { Count: 2223 } }
+[B] 98 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5108c, M: 612, S: { Count: 2225 } }
+[B] 98 :: [Updated     ] Amount: 10, 2225 -> 2235, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51098, M: 615, S: { Count: 2235 } }
+[7] 89 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5108c, M: 612, S: { Count: 2225 } }
+[A] 84 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51098, M: 615, S: { Count: 2235 } }
+[B] 9A :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51098, M: 615, S: { Count: 2235 } }
+[B] 9A :: [Concurrency] Tried 2235 -> 2237 [2], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e51098, M: 616, S: { Count: 2237 } }
+[A] 84 :: [Updated     ] Amount: 15, 2235 -> 2250, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510bb, M: 619, S: { Count: 2250 } }
+[7] 89 :: [Concurrency] Tried 2225 -> 2241 [16], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e5108c, M: 616, S: { Count: 2241 } }
+[B] 9A :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510bb, M: 619, S: { Count: 2250 } }
+[7] 89 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510bb, M: 619, S: { Count: 2250 } }
+[B] 9A :: [Concurrency] Tried 2250 -> 2252 [2], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510bb, M: 620, S: { Count: 2252 } }
+[0] 93 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510d3, M: 623, S: { Count: 2266 } }
+[B] 9A :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510d3, M: 623, S: { Count: 2266 } }
+[0] 93 :: [Updated     ] Amount: 8, 2266 -> 2274, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510db, M: 626, S: { Count: 2274 } }
+[C] 91 :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510db, M: 626, S: { Count: 2274 } }
+[B] 9A :: [Concurrency] Tried 2266 -> 2268 [2], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510d3, M: 624, S: { Count: 2268 } }
+[B] 9A :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510db, M: 626, S: { Count: 2274 } }
+[B] 9A :: [Concurrency] Tried 2274 -> 2276 [2], { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510db, M: 627, S: { Count: 2276 } }
+[7] 89 :: [*Updated    ] Expected: 2266, Actual: 2277, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510e3, M: 627, S: { Count: 2277 } }
+[B] 9A :: [READ        ] { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510e3, M: 627, S: { Count: 2277 } }
+[C] 91 :: [Updated     ] Amount: 3, 2274 -> 2277, { Id: agg_06, V: 24, E: True, C: 5e67951f340bc14d68e510e3, M: 627, S: { Count: 2277 } }
+[B] 9A :: [Split       ] Amount: 2, 2277 -> 2279, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e510f3, M: 628, S: { Count: 2279 } }
+[1] 90 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e510f3, M: 628, S: { Count: 2279 } }
+[1] 90 :: [Updated     ] Amount: 12, 2279 -> 2291, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e5112b, M: 631, S: { Count: 2291 } }
+[8] 9C :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e5112b, M: 631, S: { Count: 2291 } }
+[8] 9C :: [Updated     ] Amount: 9, 2291 -> 2300, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e51148, M: 633, S: { Count: 2300 } }
+[C] 97 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e51148, M: 633, S: { Count: 2300 } }
+[C] 97 :: [Updated     ] Amount: 6, 2300 -> 2306, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e51171, M: 635, S: { Count: 2306 } }
+[C] 99 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e51171, M: 635, S: { Count: 2306 } }
+[C] 99 :: [Updated     ] Amount: 13, 2306 -> 2319, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e5119f, M: 638, S: { Count: 2319 } }
+[4] A6 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e5119f, M: 638, S: { Count: 2319 } }
+[9] 8B :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511af, M: 641, S: { Count: 2330 } }
+[4] A6 :: [Updated     ] Amount: 11, 2319 -> 2330, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511af, M: 641, S: { Count: 2330 } }
+[9] 8B :: [Updated     ] Amount: 11, 2330 -> 2341, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511b6, M: 644, S: { Count: 2341 } }
+[C] 9B :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511b6, M: 644, S: { Count: 2341 } }
+[9] 8D :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511d1, M: 646, S: { Count: 2349 } }
+[C] 9B :: [Updated     ] Amount: 8, 2341 -> 2349, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511d1, M: 646, S: { Count: 2349 } }
+[7] 92 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511d1, M: 646, S: { Count: 2349 } }
+[7] 92 :: [Concurrency] Tried 2349 -> 2355 [6], { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511d1, M: 648, S: { Count: 2355 } }
+[E] 9A :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 647, S: { Count: 2353 } }
+[7] 92 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 647, S: { Count: 2353 } }
+[9] 8D :: [Updated     ] Amount: 4, 2349 -> 2353, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 647, S: { Count: 2353 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 647, S: { Count: 2353 } }
+[E] 9A :: [Updated     ] Amount: 3, 2353 -> 2356, { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511e8, M: 648, S: { Count: 2356 } }
+[7] 92 :: [Concurrency] Tried 2353 -> 2359 [6], { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 649, S: { Count: 2359 } }
+[B] A5 :: [Concurrency] Tried 2353 -> 2355 [2], { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511dc, M: 648, S: { Count: 2355 } }
+[7] 92 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511e8, M: 648, S: { Count: 2356 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 25, E: True, C: 5e67951f340bc14d68e511e8, M: 648, S: { Count: 2356 } }
+[B] A5 :: [Concurrency] Tried 2356 -> 2358 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511ff, M: 649, S: { Count: 2358 } }
+[9] 90 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 650, S: { Count: 2362 } }
+[A] 8D :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 650, S: { Count: 2362 } }
+[0] 9E :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 650, S: { Count: 2362 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 650, S: { Count: 2362 } }
+[0] 9E :: [Concurrency] Tried 2362 -> 2375 [13], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 653, S: { Count: 2375 } }
+[A] 8D :: [Updated     ] Amount: 3, 2362 -> 2365, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[0] 9E :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[B] A5 :: [Concurrency] Tried 2362 -> 2364 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 651, S: { Count: 2364 } }
+[7] 92 :: [*Split      ] Expected: 2362, Actual: 2365, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[9] 90 :: [Concurrency] Tried 2362 -> 2379 [17], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e511fd, M: 654, S: { Count: 2379 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[1] 99 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[9] 90 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 651, S: { Count: 2365 } }
+[0] 9E :: [Updated     ] Amount: 13, 2365 -> 2378, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51212, M: 654, S: { Count: 2378 } }
+[8] A2 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51212, M: 654, S: { Count: 2378 } }
+[9] 90 :: [Concurrency] Tried 2365 -> 2382 [17], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 655, S: { Count: 2382 } }
+[9] 90 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 655, S: { Count: 2383 } }
+[B] A5 :: [Concurrency] Tried 2365 -> 2367 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 652, S: { Count: 2367 } }
+[1] 99 :: [Concurrency] Tried 2365 -> 2380 [15], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51207, M: 655, S: { Count: 2380 } }
+[1] 99 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 655, S: { Count: 2383 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 655, S: { Count: 2383 } }
+[8] A2 :: [Updated     ] Amount: 5, 2378 -> 2383, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 655, S: { Count: 2383 } }
+[B] A5 :: [Concurrency] Tried 2383 -> 2385 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 656, S: { Count: 2385 } }
+[1] 99 :: [Concurrency] Tried 2383 -> 2398 [15], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5121e, M: 659, S: { Count: 2398 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51221, M: 659, S: { Count: 2400 } }
+[1] 99 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51221, M: 659, S: { Count: 2400 } }
+[9] 90 :: [Updated     ] Amount: 17, 2383 -> 2400, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51221, M: 659, S: { Count: 2400 } }
+[B] A5 :: [Concurrency] Tried 2400 -> 2402 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51221, M: 660, S: { Count: 2402 } }
+[6] A1 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51236, M: 663, S: { Count: 2415 } }
+[1] 99 :: [Updated     ] Amount: 15, 2400 -> 2415, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51236, M: 663, S: { Count: 2415 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51236, M: 663, S: { Count: 2415 } }
+[B] A5 :: [Concurrency] Tried 2415 -> 2417 [2], { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51236, M: 664, S: { Count: 2417 } }
+[B] A5 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5123c, M: 667, S: { Count: 2428 } }
+[6] A1 :: [Updated     ] Amount: 13, 2415 -> 2428, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5123c, M: 667, S: { Count: 2428 } }
+[6] A2 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5124a, M: 668, S: { Count: 2430 } }
+[B] A5 :: [Updated     ] Amount: 2, 2428 -> 2430, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5124a, M: 668, S: { Count: 2430 } }
+[9] 93 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e51252, M: 671, S: { Count: 2438 } }
+[6] A2 :: [*Updated    ] Expected: 2438, Actual: 2442, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5125e, M: 672, S: { Count: 2442 } }
+[9] 93 :: [Updated     ] Amount: 4, 2438 -> 2442, { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5125e, M: 672, S: { Count: 2442 } }
+[9] 95 :: [READ        ] { Id: agg_06, V: 26, E: True, C: 5e67951f340bc14d68e5125e, M: 672, S: { Count: 2442 } }
+[9] 95 :: [Split       ] Amount: 13, 2442 -> 2455, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51289, M: 676, S: { Count: 2455 } }
+[9] 97 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51289, M: 676, S: { Count: 2455 } }
+[9] 97 :: [Updated     ] Amount: 5, 2455 -> 2460, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512b1, M: 677, S: { Count: 2460 } }
+[C] A5 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512b1, M: 677, S: { Count: 2460 } }
+[6] A6 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512bf, M: 680, S: { Count: 2470 } }
+[C] A5 :: [Updated     ] Amount: 10, 2460 -> 2470, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512bf, M: 680, S: { Count: 2470 } }
+[6] A6 :: [Updated     ] Amount: 2, 2470 -> 2472, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512c7, M: 681, S: { Count: 2472 } }
+[4] B8 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e512c7, M: 681, S: { Count: 2472 } }
+[4] B8 :: [Updated     ] Amount: 9, 2472 -> 2481, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51344, M: 684, S: { Count: 2481 } }
+[B] AD :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51344, M: 684, S: { Count: 2481 } }
+[B] AD :: [Updated     ] Amount: 8, 2481 -> 2489, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5135b, M: 687, S: { Count: 2489 } }
+[4] BA :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5135b, M: 687, S: { Count: 2489 } }
+[4] BA :: [Updated     ] Amount: 11, 2489 -> 2500, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5136a, M: 691, S: { Count: 2500 } }
+[2] BD :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5136a, M: 691, S: { Count: 2500 } }
+[6] A9 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5136a, M: 691, S: { Count: 2500 } }
+[6] A9 :: [Concurrency] Tried 2500 -> 2507 [7], { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5136a, M: 693, S: { Count: 2507 } }
+[2] BD :: [Updated     ] Amount: 12, 2500 -> 2512, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51381, M: 695, S: { Count: 2512 } }
+[6] A9 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51381, M: 695, S: { Count: 2512 } }
+[E] A8 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51381, M: 695, S: { Count: 2512 } }
+[E] A8 :: [Concurrency] Tried 2512 -> 2525 [13], { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51381, M: 698, S: { Count: 2525 } }
+[6] A9 :: [Updated     ] Amount: 7, 2512 -> 2519, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 697, S: { Count: 2519 } }
+[E] A8 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 697, S: { Count: 2519 } }
+[C] AD :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 697, S: { Count: 2519 } }
+[1] A5 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 697, S: { Count: 2519 } }
+[1] A5 :: [Concurrency] Tried 2519 -> 2531 [12], { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 701, S: { Count: 2531 } }
+[C] AD :: [Concurrency] Tried 2519 -> 2531 [12], { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e51390, M: 701, S: { Count: 2531 } }
+[E] A8 :: [Updated     ] Amount: 13, 2519 -> 2532, { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5139c, M: 700, S: { Count: 2532 } }
+[1] A5 :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5139c, M: 700, S: { Count: 2532 } }
+[C] AD :: [READ        ] { Id: agg_06, V: 27, E: True, C: 5e67951f340bc14d68e5139c, M: 700, S: { Count: 2532 } }
+[C] AD :: [Concurrency] Tried 2532 -> 2544 [12], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e513ae, M: 704, S: { Count: 2544 } }
+[C] AD :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e513ac, M: 704, S: { Count: 2544 } }
+[1] A5 :: [Split       ] Amount: 12, 2532 -> 2544, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e513ac, M: 704, S: { Count: 2544 } }
+[C] AD :: [Updated     ] Amount: 12, 2544 -> 2556, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e513be, M: 708, S: { Count: 2556 } }
+[2] C5 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e513be, M: 708, S: { Count: 2556 } }
+[2] C5 :: [Updated     ] Amount: 14, 2556 -> 2570, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 712, S: { Count: 2570 } }
+[2] C6 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 712, S: { Count: 2570 } }
+[E] AD :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 712, S: { Count: 2570 } }
+[0] B0 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 712, S: { Count: 2570 } }
+[9] A5 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51440, M: 713, S: { Count: 2574 } }
+[2] C6 :: [Updated     ] Amount: 4, 2570 -> 2574, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51440, M: 713, S: { Count: 2574 } }
+[E] AD :: [Concurrency] Tried 2570 -> 2584 [14], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 715, S: { Count: 2584 } }
+[0] B0 :: [Concurrency] Tried 2570 -> 2585 [15], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5142b, M: 716, S: { Count: 2585 } }
+[9] A5 :: [Updated     ] Amount: 4, 2574 -> 2578, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 715, S: { Count: 2578 } }
+[E] AD :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 715, S: { Count: 2578 } }
+[0] B0 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 715, S: { Count: 2578 } }
+[3] B4 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 715, S: { Count: 2578 } }
+[0] B0 :: [Concurrency] Tried 2578 -> 2593 [15], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 719, S: { Count: 2593 } }
+[3] B4 :: [Concurrency] Tried 2578 -> 2590 [12], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51447, M: 719, S: { Count: 2590 } }
+[E] AD :: [Updated     ] Amount: 14, 2578 -> 2592, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51450, M: 718, S: { Count: 2592 } }
+[0] B0 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51450, M: 718, S: { Count: 2592 } }
+[3] B4 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51450, M: 718, S: { Count: 2592 } }
+[3] B4 :: [Concurrency] Tried 2592 -> 2604 [12], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51450, M: 722, S: { Count: 2604 } }
+[0] B0 :: [Updated     ] Amount: 15, 2592 -> 2607, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 722, S: { Count: 2607 } }
+[B] B3 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 722, S: { Count: 2607 } }
+[6] B2 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 722, S: { Count: 2607 } }
+[3] B4 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 722, S: { Count: 2607 } }
+[6] B2 :: [Concurrency] Tried 2607 -> 2612 [5], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 723, S: { Count: 2612 } }
+[3] B4 :: [Concurrency] Tried 2607 -> 2619 [12], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e5145d, M: 726, S: { Count: 2619 } }
+[B] B3 :: [Updated     ] Amount: 11, 2607 -> 2618, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51469, M: 726, S: { Count: 2618 } }
+[6] B2 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51469, M: 726, S: { Count: 2618 } }
+[3] B4 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51469, M: 726, S: { Count: 2618 } }
+[3] B4 :: [Concurrency] Tried 2618 -> 2630 [12], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51469, M: 730, S: { Count: 2630 } }
+[6] B2 :: [Updated     ] Amount: 5, 2618 -> 2623, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51478, M: 727, S: { Count: 2623 } }
+[3] B4 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51478, M: 727, S: { Count: 2623 } }
+[5] AC :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51478, M: 727, S: { Count: 2623 } }
+[5] AC :: [Concurrency] Tried 2623 -> 2638 [15], { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51478, M: 730, S: { Count: 2638 } }
+[3] B4 :: [Updated     ] Amount: 12, 2623 -> 2635, { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51488, M: 731, S: { Count: 2635 } }
+[5] AC :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51488, M: 731, S: { Count: 2635 } }
+[B] B6 :: [READ        ] { Id: agg_06, V: 28, E: True, C: 5e67951f340bc14d68e51488, M: 731, S: { Count: 2635 } }
+[B] B6 :: [Concurrency] Tried 2635 -> 2639 [4], { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51498, M: 732, S: { Count: 2639 } }
+[5] AC :: [Split       ] Amount: 15, 2635 -> 2650, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51496, M: 734, S: { Count: 2650 } }
+[B] B6 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51496, M: 734, S: { Count: 2650 } }
+[E] B1 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e514a9, M: 735, S: { Count: 2654 } }
+[B] B6 :: [Updated     ] Amount: 4, 2650 -> 2654, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e514a9, M: 735, S: { Count: 2654 } }
+[E] B1 :: [Updated     ] Amount: 9, 2654 -> 2663, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e514b2, M: 737, S: { Count: 2663 } }
+[5] B0 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e514b2, M: 737, S: { Count: 2663 } }
+[5] B0 :: [Updated     ] Amount: 17, 2663 -> 2680, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51503, M: 741, S: { Count: 2680 } }
+[7] AE :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51503, M: 741, S: { Count: 2680 } }
+[7] AE :: [Updated     ] Amount: 5, 2680 -> 2685, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51518, M: 742, S: { Count: 2685 } }
+[7] AF :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51518, M: 742, S: { Count: 2685 } }
+[7] AF :: [Updated     ] Amount: 4, 2685 -> 2689, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e5152e, M: 743, S: { Count: 2689 } }
+[F] AD :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e5152e, M: 743, S: { Count: 2689 } }
+[C] B9 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e5152e, M: 743, S: { Count: 2689 } }
+[C] B9 :: [Concurrency] Tried 2689 -> 2698 [9], { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e5152e, M: 746, S: { Count: 2698 } }
+[F] AD :: [Updated     ] Amount: 10, 2689 -> 2699, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51536, M: 746, S: { Count: 2699 } }
+[C] B9 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51536, M: 746, S: { Count: 2699 } }
+[C] B9 :: [Updated     ] Amount: 9, 2699 -> 2708, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51545, M: 749, S: { Count: 2708 } }
+[0] B8 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51545, M: 749, S: { Count: 2708 } }
+[0] B8 :: [Updated     ] Amount: 7, 2708 -> 2715, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51558, M: 752, S: { Count: 2715 } }
+[E] B7 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51558, M: 752, S: { Count: 2715 } }
+[E] B7 :: [Updated     ] Amount: 12, 2715 -> 2727, { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51565, M: 755, S: { Count: 2727 } }
+[7] B5 :: [READ        ] { Id: agg_06, V: 29, E: True, C: 5e67951f340bc14d68e51565, M: 755, S: { Count: 2727 } }
+[7] B5 :: [Split       ] Amount: 10, 2727 -> 2737, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e51590, M: 757, S: { Count: 2737 } }
+[A] AD :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e51590, M: 757, S: { Count: 2737 } }
+[A] AD :: [Updated     ] Amount: 13, 2737 -> 2750, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515a7, M: 761, S: { Count: 2750 } }
+[1] BB :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515a7, M: 761, S: { Count: 2750 } }
+[1] BB :: [Updated     ] Amount: 14, 2750 -> 2764, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515bc, M: 765, S: { Count: 2764 } }
+[F] B6 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515bc, M: 765, S: { Count: 2764 } }
+[F] B6 :: [Updated     ] Amount: 7, 2764 -> 2771, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515df, M: 767, S: { Count: 2771 } }
+[5] B8 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515df, M: 767, S: { Count: 2771 } }
+[5] B8 :: [Updated     ] Amount: 10, 2771 -> 2781, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515f0, M: 769, S: { Count: 2781 } }
+[7] BA :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e515f0, M: 769, S: { Count: 2781 } }
+[7] BA :: [Updated     ] Amount: 3, 2781 -> 2784, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e51601, M: 770, S: { Count: 2784 } }
+[A] B3 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e51601, M: 770, S: { Count: 2784 } }
+[A] B3 :: [Updated     ] Amount: 2, 2784 -> 2786, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5161a, M: 771, S: { Count: 2786 } }
+[F] BA :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5161a, M: 771, S: { Count: 2786 } }
+[B] C3 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5161a, M: 771, S: { Count: 2786 } }
+[F] BA :: [Concurrency] Tried 2786 -> 2794 [8], { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5161a, M: 773, S: { Count: 2794 } }
+[B] C3 :: [Updated     ] Amount: 3, 2786 -> 2789, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5164d, M: 772, S: { Count: 2789 } }
+[F] BA :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5164d, M: 772, S: { Count: 2789 } }
+[3] C6 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5164d, M: 772, S: { Count: 2789 } }
+[F] BA :: [Updated     ] Amount: 8, 2789 -> 2797, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 774, S: { Count: 2797 } }
+[3] C6 :: [Concurrency] Tried 2789 -> 2800 [11], { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5164d, M: 776, S: { Count: 2800 } }
+[7] BE :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 774, S: { Count: 2797 } }
+[5] BC :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 774, S: { Count: 2797 } }
+[3] C6 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 774, S: { Count: 2797 } }
+[3] C6 :: [Concurrency] Tried 2797 -> 2808 [11], { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 778, S: { Count: 2808 } }
+[5] BC :: [Concurrency] Tried 2797 -> 2802 [5], { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5165d, M: 775, S: { Count: 2802 } }
+[7] BE :: [Updated     ] Amount: 3, 2797 -> 2800, { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5166d, M: 775, S: { Count: 2800 } }
+[5] BC :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5166d, M: 775, S: { Count: 2800 } }
+[3] C6 :: [READ        ] { Id: agg_06, V: 30, E: True, C: 5e67951f340bc14d68e5166d, M: 775, S: { Count: 2800 } }
+[3] C6 :: [Concurrency] Tried 2800 -> 2811 [11], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5167b, M: 779, S: { Count: 2811 } }
+[5] BC :: [Split       ] Amount: 5, 2800 -> 2805, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 776, S: { Count: 2805 } }
+[3] C6 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 776, S: { Count: 2805 } }
+[5] BD :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 776, S: { Count: 2805 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 776, S: { Count: 2805 } }
+[5] BD :: [Concurrency] Tried 2805 -> 2809 [4], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 778, S: { Count: 2809 } }
+[3] C6 :: [Updated     ] Amount: 11, 2805 -> 2816, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 780, S: { Count: 2816 } }
+[6] C3 :: [Concurrency] Tried 2805 -> 2821 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51676, M: 780, S: { Count: 2821 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 780, S: { Count: 2816 } }
+[3] C7 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 780, S: { Count: 2816 } }
+[5] BD :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 780, S: { Count: 2816 } }
+[5] BD :: [Concurrency] Tried 2816 -> 2820 [4], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 782, S: { Count: 2820 } }
+[3] C7 :: [Updated     ] Amount: 9, 2816 -> 2825, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 783, S: { Count: 2825 } }
+[5] BD :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 783, S: { Count: 2825 } }
+[6] C3 :: [Concurrency] Tried 2816 -> 2832 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e51685, M: 784, S: { Count: 2832 } }
+[C] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 783, S: { Count: 2825 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 783, S: { Count: 2825 } }
+[C] C3 :: [Concurrency] Tried 2825 -> 2843 [18], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 787, S: { Count: 2843 } }
+[5] BD :: [Updated     ] Amount: 4, 2825 -> 2829, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 785, S: { Count: 2829 } }
+[6] C3 :: [Concurrency] Tried 2825 -> 2841 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e5169c, M: 787, S: { Count: 2841 } }
+[7] C0 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 785, S: { Count: 2829 } }
+[C] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 785, S: { Count: 2829 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 785, S: { Count: 2829 } }
+[C] C3 :: [Concurrency] Tried 2829 -> 2847 [18], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 789, S: { Count: 2847 } }
+[6] C3 :: [Concurrency] Tried 2829 -> 2845 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516a8, M: 789, S: { Count: 2845 } }
+[7] C0 :: [Updated     ] Amount: 4, 2829 -> 2833, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516b3, M: 787, S: { Count: 2833 } }
+[C] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516b3, M: 787, S: { Count: 2833 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516b3, M: 787, S: { Count: 2833 } }
+[6] C3 :: [Concurrency] Tried 2833 -> 2849 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516b3, M: 791, S: { Count: 2849 } }
+[C] C3 :: [Updated     ] Amount: 18, 2833 -> 2851, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516be, M: 791, S: { Count: 2851 } }
+[6] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516be, M: 791, S: { Count: 2851 } }
+[6] C3 :: [Updated     ] Amount: 16, 2851 -> 2867, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516c8, M: 795, S: { Count: 2867 } }
+[A] BD :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516c8, M: 795, S: { Count: 2867 } }
+[7] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516c8, M: 795, S: { Count: 2867 } }
+[7] C3 :: [Concurrency] Tried 2867 -> 2883 [16], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516c8, M: 799, S: { Count: 2883 } }
+[A] BD :: [Updated     ] Amount: 2, 2867 -> 2869, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516e6, M: 796, S: { Count: 2869 } }
+[7] C3 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516e6, M: 796, S: { Count: 2869 } }
+[A] BE :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516e6, M: 796, S: { Count: 2869 } }
+[A] BE :: [Concurrency] Tried 2869 -> 2873 [4], { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516e6, M: 797, S: { Count: 2873 } }
+[7] C3 :: [Updated     ] Amount: 16, 2869 -> 2885, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516ef, M: 800, S: { Count: 2885 } }
+[A] BE :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516ef, M: 800, S: { Count: 2885 } }
+[A] BE :: [Updated     ] Amount: 4, 2885 -> 2889, { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516f8, M: 801, S: { Count: 2889 } }
+[7] C5 :: [READ        ] { Id: agg_06, V: 31, E: True, C: 5e67951f340bc14d68e516f8, M: 801, S: { Count: 2889 } }
+[7] C5 :: [Split       ] Amount: 10, 2889 -> 2899, { Id: agg_06, V: 32, E: True, C: 5e67951f340bc14d68e516fc, M: 804, S: { Count: 2899 } }
+[7] C7 :: [READ        ] { Id: agg_06, V: 32, E: True, C: 5e67951f340bc14d68e516fc, M: 804, S: { Count: 2899 } }
+[7] C7 :: [Updated     ] Amount: 14, 2899 -> 2913, { Id: agg_06, V: 32, E: True, C: 5e67951f340bc14d68e5170a, M: 808, S: { Count: 2913 } }

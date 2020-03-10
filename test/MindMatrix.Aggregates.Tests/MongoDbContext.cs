@@ -18,8 +18,10 @@ namespace MindMatrix.Aggregates
         private readonly AggregateSettings _settings;
         private readonly IDateTime _dateTime = new StaticDateTime();
         public IDateTime DateTime => _dateTime;
-        public MongoDbContext(AggregateSettings settings = default)
+        private readonly bool _destroy;
+        public MongoDbContext(AggregateSettings settings = default, bool destroy = true)
         {
+            _destroy = destroy;
             var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
             _client = new MongoClient(connectionSettings);
             _database = _client.GetDatabase(_databaseId);
@@ -30,7 +32,8 @@ namespace MindMatrix.Aggregates
 
         public async ValueTask DisposeAsync()
         {
-            await _client.DropDatabaseAsync(_databaseId);
+            if (_destroy)
+                await _client.DropDatabaseAsync(_databaseId);
         }
     }
 

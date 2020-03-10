@@ -5,41 +5,60 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Shouldly;
 
-namespace MindMatrix.Aggregates.Tests
+namespace MindMatrix.Aggregates
 {
+
+    public class Counter
+    {
+        public int Count { get; set; }
+
+        public override string ToString() => $"{{ Count: {Count} }}";
+    }
+
+    public class Increment : IMutation<Counter>
+    {
+        public int Amount { get; set; }
+        public void Apply(Counter aggregate)
+        {
+            aggregate.Count += Amount;
+        }
+    }
+
+    public class License
+    {
+        public string TitleId { get; internal set; }
+        public DateTime ExpiresOn { get; internal set; }
+        public bool Released { get; internal set; }
+    }
+
+    public class LicenseCreated : IMutation<License>
+    {
+        public DateTime CreatedOn { get; set; }
+        public void Apply(License aggregate)
+        {
+            aggregate.ExpiresOn = CreatedOn.AddDays(365);
+            aggregate.Released = false;
+        }
+    }
+
+    public class LicenseReleased : IMutation<License>
+    {
+        public void Apply(License aggregate)
+        {
+            aggregate.Released = true;
+        }
+    }
+
+    public class LicenseNoop : IMutation<License>
+    {
+        public void Apply(License aggregate)
+        {
+        }
+    }
+
+
     public class AggregateEventStreamTests
     {
-        public class License
-        {
-            public string TitleId { get; internal set; }
-            public DateTime ExpiresOn { get; internal set; }
-            public bool Released { get; internal set; }
-        }
-
-        public class LicenseCreated : IMutation<License>
-        {
-            public DateTime CreatedOn { get; set; }
-            public void Apply(License aggregate)
-            {
-                aggregate.ExpiresOn = CreatedOn.AddDays(365);
-                aggregate.Released = false;
-            }
-        }
-
-        public class LicenseReleased : IMutation<License>
-        {
-            public void Apply(License aggregate)
-            {
-                aggregate.Released = true;
-            }
-        }
-
-        public class LicenseNoop : IMutation<License>
-        {
-            public void Apply(License aggregate)
-            {
-            }
-        }
 
         public async Task CreatesNewAggregate()
         {
@@ -167,20 +186,6 @@ namespace MindMatrix.Aggregates.Tests
 
             aggregate = await context.Repository.GetLatest(aggregateId);
             aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
-        }
-
-        public class Counter
-        {
-            public int Count { get; set; }
-        }
-
-        public class Increment : IMutation<Counter>
-        {
-            public int Amount { get; set; }
-            public void Apply(Counter aggregate)
-            {
-                aggregate.Count += Amount;
-            }
         }
 
         public async Task Threaded()

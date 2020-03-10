@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5C525C0D-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMatrix.Aggregates.Tests", "test\MindMatrix.Aggregates.Tests\MindMatrix.Aggregates.Tests.csproj", "{3CDA4392-4533-4EAA-9F55-3511353DC8B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMatrix.Aggregates.Thrasher", "test\MindMatrix.Aggregates.Thrasher\MindMatrix.Aggregates.Thrasher.csproj", "{832B3F2E-7114-4361-B4A3-570ACC0157C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,9 +50,22 @@ Global
 		{3CDA4392-4533-4EAA-9F55-3511353DC8B9}.Release|x64.Build.0 = Release|Any CPU
 		{3CDA4392-4533-4EAA-9F55-3511353DC8B9}.Release|x86.ActiveCfg = Release|Any CPU
 		{3CDA4392-4533-4EAA-9F55-3511353DC8B9}.Release|x86.Build.0 = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|x64.Build.0 = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|x64.ActiveCfg = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|x64.Build.0 = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{90804B9E-3B79-4EB6-96F2-76498D0C529B} = {EC27F90E-8642-453B-9BEF-6D6CD38A49FE}
 		{3CDA4392-4533-4EAA-9F55-3511353DC8B9} = {5C525C0D-E7B6-4D5D-B303-0A5DD2E040C4}
+		{832B3F2E-7114-4361-B4A3-570ACC0157C6} = {5C525C0D-E7B6-4D5D-B303-0A5DD2E040C4}
 	EndGlobalSection
 EndGlobal

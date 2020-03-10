@@ -27,7 +27,7 @@ namespace MindMatrix.Aggregates
         DateTime LastMutation { get; }
         AggregateState State { get; }
         void Apply<Mutation>(Mutation mutation) where Mutation : IMutation<AggregateState>;
-        Task Commit(CancellationToken token = default);
+        Task<CommitStatusResult> Commit(CancellationToken token = default);
     }
 
     public interface IAggregateRepository<Aggregate>
@@ -63,6 +63,25 @@ namespace MindMatrix.Aggregates
         DateTime UtcNow { get; }
     }
 
+    public class CommitStatusResult
+    {
+        public CommitStatus Status { get; set; }
+        public ObjectId LastCommit { get; set; }
+        public ObjectId NewCommit { get; set; }
+
+        public override string ToString() => $"[{Status}, P: {LastCommit}, N: {NewCommit}]";
+    }
+
+    public enum CommitStatus
+    {
+        Updated,
+        Split,
+        Noop,
+        New,
+        Concurrency
+
+    }
+
     public class Aggregate<AggregateState> : IAggregate<AggregateState>
         where AggregateState : new()
     {
@@ -73,6 +92,7 @@ namespace MindMatrix.Aggregates
         [BsonId]
         public ObjectId Id { get; set; }
 
+
         public string AggregateId { get; set; }
 
         public long AggregateVersion { get; set; }
@@ -82,7 +102,10 @@ namespace MindMatrix.Aggregates
         [BsonIgnore] public bool Exists => _committedVersion > -1;
         [BsonIgnore] public bool Mutated => _newCommit != null;
 
-        public DateTime LastMutation { get; set; }
+        public ObjectId LastCommit { get; set; }
+
+        [BsonIgnore]
+        public DateTime LastMutation => LastCommit.CreationTime;
 
         public DateTime? TimeToLive { get; set; }
 
@@ -93,6 +116,8 @@ namespace MindMatrix.Aggregates
         private IMongoCollection<Aggregate<AggregateState>> _collection;
         private AggregateSettings _settings;
         private IDateTime _dateTime;
+
+        public override string ToString() => $"{{ Id: {AggregateId}, V: {AggregateVersion}, E: {Exists}, C: {LastCommit}, M: {MutationVersion}, S: {State}: H: {this.GetHashCode():X8} }}";
 
         // public Aggregate(IMongoCollection<Aggregate<AggregateState>> collection)
         // {
@@ -132,12 +157,12 @@ namespace MindMatrix.Aggregates
             });
         }
 
-        public async Task Commit(CancellationToken token = default)
+        public async Task<CommitStatusResult> Commit(CancellationToken token = default)
         {
             if (_newCommit == null)
-                return;
+                return new CommitStatusResult() { Status = CommitStatus.Noop, LastCommit = LastCommit, NewCommit = LastCommit };
 
-            var lastMutation = _dateTime.UtcNow;
+            var lastCommit = LastCommit;
             if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1)
             {
                 //we need to split to a new version
@@ -145,11 +170,19 @@ namespace MindMatrix.Aggregates
                 //if no commit we need to reset the state to default
                 var oldState = State;
                 if (_committedVersion == -1)
+                {
                     State = new AggregateState();
+                    //Console.WriteLine($"New: {AggregateId}");
+                }
+                else
+                {
+                    //Console.WriteLine($"Split: {AggregateId}");
+                }
+
 
                 Id = ObjectId.GenerateNewId();
                 AggregateVersion++;
-                LastMutation = lastMutation;
+                LastCommit = _newCommit.CommitId;
 
                 _committedVersion = MutationVersion;
                 MutationCommits.Clear();
@@ -166,19 +199,27 @@ namespace MindMatrix.Aggregates
                 catch (MongoWriteException writeEx)
                 {
                     if (writeEx.WriteError.Category == ServerErrorCategory.DuplicateKey)
-                        throw new ConcurrencyException(AggregateId, AggregateVersion);
+                    {
+                        return new CommitStatusResult() { Status = CommitStatus.Concurrency, LastCommit = lastCommit, NewCommit = LastCommit };
+                        //throw new ConcurrencyException(AggregateId, AggregateVersion);
+                    }
 
                     throw;
                 }
-                State = oldState;
-
+                finally
+                {
+                    State = oldState;
+                }
 
                 if (AggregateVersion > 0)
                 {
                     for (var i = 0; i < 3; i++)
                     {
                         var update = Builders<Aggregate<AggregateState>>.Update;
-                        var updateDefintion = update.Set(x => x.TimeToLive, _dateTime.UtcNow);
+                        var updateDefintion =
+                            update
+                                .Set(x => x.TimeToLive, _dateTime.UtcNow);
+                        //.Set(x => x.LastCommit, LastCommit);
 
                         var result = await _collection.UpdateOneAsync(
                             x => x.AggregateId == AggregateId && x.AggregateVersion == AggregateVersion - 1,
@@ -195,7 +236,11 @@ namespace MindMatrix.Aggregates
 
                         await Task.Delay(i * 50);
                     }
+
+                    return new CommitStatusResult() { Status = CommitStatus.Split, LastCommit = lastCommit, NewCommit = LastCommit };
                 }
+
+                return new CommitStatusResult() { Status = CommitStatus.New, LastCommit = lastCommit, NewCommit = LastCommit };
             }
             else
             {
@@ -203,12 +248,12 @@ namespace MindMatrix.Aggregates
                 var updateDefintion =
                     update
                         .Set(x => x.MutationVersion, MutationVersion)
-                        .Set(x => x.LastMutation, lastMutation)
+                        .Set(x => x.LastCommit, _newCommit.CommitId)
                         .Push(x => x.MutationCommits, _newCommit);
 
                 var result = await _collection.UpdateOneAsync(
                     x => x.AggregateId == AggregateId && x.AggregateVersion == AggregateVersion &&
-                            x.MutationVersion == _committedVersion && x.LastMutation == LastMutation,
+                            x.MutationVersion == _committedVersion && x.LastCommit == LastCommit,
                     updateDefintion,
                     new UpdateOptions()
                     {
@@ -216,14 +261,17 @@ namespace MindMatrix.Aggregates
                     },
                     token
                 );
+                //throw new ConcurrencyException(AggregateId, AggregateVersion);
 
-                if (result.ModifiedCount == 0)
-                    throw new ConcurrencyException(AggregateId, AggregateVersion);
-
-                LastMutation = lastMutation;
+                LastCommit = _newCommit.CommitId;
                 _committedVersion = MutationVersion;
                 MutationCommits.Add(_newCommit);
                 _newCommit = null;
+
+                if (result.ModifiedCount != 1)
+                    return new CommitStatusResult() { Status = CommitStatus.Concurrency, LastCommit = lastCommit, NewCommit = LastCommit };
+
+                return new CommitStatusResult() { Status = CommitStatus.Updated, LastCommit = lastCommit, NewCommit = LastCommit };
             }
         }
     }
