@@ -7,8 +7,15 @@
     using System.Threading.Tasks;
     using Shouldly;
 
+    public class DateTimeService : IDateTime
+    {
+        public DateTime UtcNow => DateTime.UtcNow;
+    }
+
     class Program
     {
+
+
         public static async Task Main(string[] args)
         {
             var threads = 24;
@@ -17,7 +24,7 @@
             var isRunning = true;
             //var iterations = 20000;
             var settings = new AggregateSettings() { MaxMutationCommits = 100 };
-            await using var context = new MongoDbContext<Counter>(settings, false);
+            await using var context = new MongoDbContext<Counter>(settings, false, new DateTimeService(), "v2f66bb5f716d4743b2a8e80a568ac932");
             var aggregateIds = Enumerable.Range(0, aggregates).Select(x => $"agg_{x:X8}").ToArray();
             var totals = new int[aggregateIds.Length];
             var mutations = 0;

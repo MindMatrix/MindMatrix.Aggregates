@@ -16,11 +16,13 @@ namespace MindMatrix.Aggregates
 
         private readonly string _databaseId = "v" + Guid.NewGuid().ToString().Replace("-", "");
         private readonly AggregateSettings _settings;
-        private readonly IDateTime _dateTime = new StaticDateTime();
+        private readonly IDateTime _dateTime;
         public IDateTime DateTime => _dateTime;
         private readonly bool _destroy;
-        public MongoDbContext(AggregateSettings settings = default, bool destroy = true)
+        public MongoDbContext(AggregateSettings settings = default, bool destroy = true, IDateTime dateTime = default, string databaseId = default)
         {
+            _databaseId = databaseId ?? "v" + Guid.NewGuid().ToString().Replace("-", "");
+            _dateTime = dateTime ?? new StaticDateTime();
             _destroy = destroy;
             var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
             _client = new MongoClient(connectionSettings);
