@@ -18,6 +18,7 @@
 
         public static async Task Main(string[] args)
         {
+
             var threads = 24;
             var aggregates = 10000;
             var iterations = int.MaxValue;
@@ -29,6 +30,13 @@
             var totals = new int[aggregateIds.Length];
             var mutations = 0;
             var concurrency = 0;
+
+            for (var i = 0; i < aggregateIds.Length; i++)
+            {
+                var aggregate = await context.Repository.GetLatest(aggregateIds[i]);
+                totals[i] = aggregate.State.Count;
+            }
+
 
             var sw = Stopwatch.StartNew();
 
@@ -121,7 +129,7 @@
                 aggregate.State.Count.ShouldBe(totals[i]);
             }
 
-            Console.WriteLine($"Elapsed: {sw.Elapsed}, Avg: {(float)sw.ElapsedMilliseconds / iterations / threads}ms, {(int)((iterations * threads) / sw.Elapsed.TotalSeconds)}/s, Concurrency Errors: {concurrency}, Mutations: {mutations}");
+            Console.WriteLine($"Elapsed: {sw.Elapsed}, Avg: {(float)sw.ElapsedMilliseconds / iterations}ms, {(int)(iterations / sw.Elapsed.TotalSeconds)}/s, Concurrency Errors: {concurrency}, Mutations: {mutations}");
         }
     }
 }

@@ -4,6 +4,7 @@ namespace MindMatrix.Aggregates
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
     using MongoDB.Bson;
@@ -80,6 +81,49 @@ namespace MindMatrix.Aggregates
         New,
         Concurrency
 
+    }
+
+    public static class RegisterTypes<T>
+    {
+        static RegisterTypes()
+        {
+            RegisterTypes.Scan<T>();
+        }
+    }
+
+    public static class RegisterTypes
+    {
+        public static void Scan(Assembly assembly)
+        {
+            var types = from x in assembly.GetExportedTypes()
+                        where IsAssignableToGenericType(x, typeof(IMutation<>))
+                        select x;
+
+            foreach (var it in types)
+                BsonClassMap.LookupClassMap(it);
+        }
+
+        public static void Scan<T>() => Scan(typeof(T).Assembly);
+
+
+        public static bool IsAssignableToGenericType(Type givenType, Type genericType)
+        {
+            var interfaceTypes = givenType.GetInterfaces();
+
+            foreach (var it in interfaceTypes)
+            {
+                if (it.IsGenericType && it.GetGenericTypeDefinition() == genericType)
+                    return true;
+            }
+
+            if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
+                return true;
+
+            Type baseType = givenType.BaseType;
+            if (baseType == null) return false;
+
+            return IsAssignableToGenericType(baseType, genericType);
+        }
     }
 
     public class Aggregate<AggregateState> : IAggregate<AggregateState>
@@ -351,6 +395,11 @@ namespace MindMatrix.Aggregates
     {
         //private readonly IMongoClient _client;
         //private readonly IMongoDatabase _database;
+
+        static AggregateRepository()
+        {
+            RegisterTypes.Scan<T>();
+        }
 
         private readonly AggregateSettings _settings;
         private readonly IMongoCollection<Aggregate<T>> _collection;
