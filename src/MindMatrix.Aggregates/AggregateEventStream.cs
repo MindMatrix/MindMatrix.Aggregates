@@ -3,9 +3,11 @@ namespace MindMatrix.Aggregates
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using MongoDB.Bson;
+    using MongoDB.Bson.Serialization;
     using MongoDB.Bson.Serialization.Attributes;
     using MongoDB.Driver;
 
@@ -56,10 +58,15 @@ namespace MindMatrix.Aggregates
         public int DaysToKeyOldVersions = 100;
     }
 
+    public interface IDateTime
+    {
+        DateTime UtcNow { get; }
+    }
+
     public class Aggregate<AggregateState> : IAggregate<AggregateState>
         where AggregateState : new()
     {
-        private AggregateState _state;
+        private AggregateState _state;//, _originalState;
         private long _committedVersion;
         private MutationCommit<AggregateState> _newCommit;
 
@@ -85,6 +92,7 @@ namespace MindMatrix.Aggregates
 
         private IMongoCollection<Aggregate<AggregateState>> _collection;
         private AggregateSettings _settings;
+        private IDateTime _dateTime;
 
         // public Aggregate(IMongoCollection<Aggregate<AggregateState>> collection)
         // {
@@ -92,13 +100,17 @@ namespace MindMatrix.Aggregates
         //     Mutations = new List<MutationCommit<AggregateState>>();
         // }
 
-        internal void Initialize(IMongoCollection<Aggregate<AggregateState>> collection, AggregateSettings settings)
+        internal void Initialize(IMongoCollection<Aggregate<AggregateState>> collection, AggregateSettings settings, IDateTime dateTime)
         {
             _collection = collection;
             _settings = settings;
+            _dateTime = dateTime;
             _committedVersion = MutationVersion;
+            //_originalState = BsonSerializer.Deserialize<AggregateState>(_state.ToBsonDocument());
 
-            foreach (var commits in MutationCommits)
+            //we have to skip the first commit since the state already contains it
+            var skip = AggregateVersion > 0 ? 1 : 0;
+            foreach (var commits in MutationCommits.Skip(skip))
                 foreach (var mutationEvent in commits.MutationEvents)
                     mutationEvent.Mutation.Apply(_state);
         }
@@ -125,7 +137,7 @@ namespace MindMatrix.Aggregates
             if (_newCommit == null)
                 return;
 
-            var lastMutation = DateTime.UtcNow;
+            var lastMutation = _dateTime.UtcNow;
             if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1)
             {
                 //we need to split to a new version
@@ -143,13 +155,47 @@ namespace MindMatrix.Aggregates
                 MutationCommits.Clear();
                 MutationCommits.Add(_newCommit);
                 _newCommit = null;
+                try
+                {
+                    await _collection.InsertOneAsync(
+                                          this,
+                                          default(InsertOneOptions),
+                                          token
+                                      );
+                }
+                catch (MongoWriteException writeEx)
+                {
+                    if (writeEx.WriteError.Category == ServerErrorCategory.DuplicateKey)
+                        throw new ConcurrencyException(AggregateId, AggregateVersion);
 
-                await _collection.InsertOneAsync(
-                                      this,
-                                      default(InsertOneOptions),
-                                      token
-                                  );
+                    throw;
+                }
                 State = oldState;
+
+
+                if (AggregateVersion > 0)
+                {
+                    for (var i = 0; i < 3; i++)
+                    {
+                        var update = Builders<Aggregate<AggregateState>>.Update;
+                        var updateDefintion = update.Set(x => x.TimeToLive, _dateTime.UtcNow);
+
+                        var result = await _collection.UpdateOneAsync(
+                            x => x.AggregateId == AggregateId && x.AggregateVersion == AggregateVersion - 1,
+                            updateDefintion,
+                            new UpdateOptions()
+                            {
+                                IsUpsert = false
+                            },
+                            token
+                        );
+
+                        if (result.ModifiedCount == 1)
+                            break;
+
+                        await Task.Delay(i * 50);
+                    }
+                }
             }
             else
             {
@@ -161,7 +207,8 @@ namespace MindMatrix.Aggregates
                         .Push(x => x.MutationCommits, _newCommit);
 
                 var result = await _collection.UpdateOneAsync(
-                    x => x.AggregateId == AggregateId && x.AggregateVersion == AggregateVersion && x.MutationVersion == _committedVersion,
+                    x => x.AggregateId == AggregateId && x.AggregateVersion == AggregateVersion &&
+                            x.MutationVersion == _committedVersion && x.LastMutation == LastMutation,
                     updateDefintion,
                     new UpdateOptions()
                     {
@@ -259,12 +306,14 @@ namespace MindMatrix.Aggregates
 
         private readonly AggregateSettings _settings;
         private readonly IMongoCollection<Aggregate<T>> _collection;
+        private readonly IDateTime _dateTime;
         private readonly string _name = typeof(T).Name;
 
-        public AggregateRepository(IAggregateCollectionFactory repositoryFactory, AggregateSettings settings = default)
+        public AggregateRepository(IAggregateCollectionFactory repositoryFactory, IDateTime dateTime, AggregateSettings settings = default)
         {
             //_database = database;
             _collection = repositoryFactory.GetCollection<T>();
+            _dateTime = dateTime;
             _settings = settings ?? new AggregateSettings();
         }
 
@@ -289,7 +338,7 @@ namespace MindMatrix.Aggregates
                 record.State = new T();
             }
 
-            record.Initialize(_collection, _settings);
+            record.Initialize(_collection, _settings, _dateTime);
             return record;
         }
     }

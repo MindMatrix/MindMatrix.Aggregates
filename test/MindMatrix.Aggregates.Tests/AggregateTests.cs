@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Shouldly;
@@ -41,21 +43,17 @@ namespace MindMatrix.Aggregates.Tests
 
         public async Task CreatesNewAggregate()
         {
-            var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
-            var client = new MongoClient(connectionSettings);
-            var database = client.GetDatabase("aggregates");
-            var factory = new AggregateCollectionFactory(database);
-            var repository = new AggregateRepository<License>(factory);
+            await using var context = new MongoDbContext<License>();
 
             var aggregateId = "CreatesNewAggregate";
-            var aggregate = await repository.GetLatest(aggregateId);
-            var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
+            var aggregate = await context.Repository.GetLatest(aggregateId);
+            var createdOn = context.DateTime.UtcNow;
 
             aggregate.Apply(new LicenseCreated() { CreatedOn = createdOn });
 
             await aggregate.Commit();
 
-            var collection = database.GetCollection<Aggregate<License>>("License");
+            var collection = context.Database.GetCollection<Aggregate<License>>("License");
             var query = await collection.FindAsync(x => x.AggregateId == aggregateId && x.AggregateVersion == 0);
             var record = await query.FirstOrDefaultAsync();
 
@@ -71,28 +69,24 @@ namespace MindMatrix.Aggregates.Tests
 
         public async Task MutatesExistingAggregate()
         {
-            var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
-            var client = new MongoClient(connectionSettings);
-            var database = client.GetDatabase("aggregates");
-            var factory = new AggregateCollectionFactory(database);
-            var repository = new AggregateRepository<License>(factory);
+            await using var context = new MongoDbContext<License>();
 
             var aggregateId = "MutatesExistingAggregate";
-            var aggregate = await repository.GetLatest(aggregateId);
-            var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
+            var aggregate = await context.Repository.GetLatest(aggregateId);
+            var createdOn = context.DateTime.UtcNow;
 
             aggregate.Apply(new LicenseCreated() { CreatedOn = createdOn });
             aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
 
             await aggregate.Commit();
 
-            aggregate = await repository.GetLatest(aggregateId);
+            aggregate = await context.Repository.GetLatest(aggregateId);
             aggregate.Apply(new LicenseNoop());
             aggregate.Apply(new LicenseReleased());
             aggregate.State.Released.ShouldBe(true);
             await aggregate.Commit();
 
-            var collection = database.GetCollection<Aggregate<License>>("License");
+            var collection = context.Database.GetCollection<Aggregate<License>>("License");
             var query = await collection.FindAsync(x => x.AggregateId == aggregateId && x.AggregateVersion == 0);
             var record = await query.FirstOrDefaultAsync();
 
@@ -112,62 +106,58 @@ namespace MindMatrix.Aggregates.Tests
 
         public async Task ShouldSplit()
         {
-            var aggregateSettings = new AggregateSettings() { MaxMutationCommits = 1 };
-            var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
-            var client = new MongoClient(connectionSettings);
-            var database = client.GetDatabase("aggregates");
-            var factory = new AggregateCollectionFactory(database);
-            var repository = new AggregateRepository<License>(factory, aggregateSettings);
+            var settings = new AggregateSettings() { MaxMutationCommits = 1 };
+            await using var context = new MongoDbContext<License>(settings);
 
             var aggregateId = "ShouldSplit";
-            var aggregate = await repository.GetLatest(aggregateId);
-            var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
+            var aggregate = await context.Repository.GetLatest(aggregateId);
+            var now = context.DateTime.UtcNow;
+            var createdOn = now;
 
             aggregate.Apply(new LicenseCreated() { CreatedOn = createdOn });
             aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
 
             await aggregate.Commit();
 
-            aggregate = await repository.GetLatest(aggregateId);
+            aggregate = await context.Repository.GetLatest(aggregateId);
             aggregate.Apply(new LicenseNoop());
             aggregate.Apply(new LicenseReleased());
             aggregate.State.Released.ShouldBe(true);
             await aggregate.Commit();
 
-            var collection = database.GetCollection<Aggregate<License>>("License");
+            var collection = context.Database.GetCollection<Aggregate<License>>("License");
             var query = await collection.FindAsync(
                 x => x.AggregateId == aggregateId,
                 new FindOptions<Aggregate<License>>()
                 {
-                    Sort = Builders<Aggregate<License>>.Sort.Descending(x => x.AggregateVersion),
-                    Limit = 1
+                    Sort = Builders<Aggregate<License>>.Sort.Descending(x => x.AggregateVersion)
                 }
-
             );
-            var record = await query.FirstOrDefaultAsync();
+            var record = await query.ToListAsync();
 
-            record.ShouldNotBeNull();
-            record.AggregateVersion.ShouldBe(1);
-            record.MutationVersion.ShouldBe(2);
-            record.MutationCommits.Count.ShouldBe(1);
-            record.MutationCommits[0].MutationEvents.Count.ShouldBe(2);
-            record.MutationCommits[0].MutationEvents[0].EventId.ShouldBe(1);
-            record.MutationCommits[0].MutationEvents[0].Mutation.ShouldBeOfType<LicenseNoop>();
-            record.MutationCommits[0].MutationEvents[1].EventId.ShouldBe(2);
-            record.MutationCommits[0].MutationEvents[1].Mutation.ShouldBeOfType<LicenseReleased>();
+            record[1].ShouldNotBeNull();
+            record[1].AggregateVersion.ShouldBe(0);
+            record[1].TimeToLive.ShouldBe(now);
+
+            record[0].ShouldNotBeNull();
+            record[0].TimeToLive.ShouldBeNull();
+            record[0].AggregateVersion.ShouldBe(1);
+            record[0].MutationVersion.ShouldBe(2);
+            record[0].MutationCommits.Count.ShouldBe(1);
+            record[0].MutationCommits[0].MutationEvents.Count.ShouldBe(2);
+            record[0].MutationCommits[0].MutationEvents[0].EventId.ShouldBe(1);
+            record[0].MutationCommits[0].MutationEvents[0].Mutation.ShouldBeOfType<LicenseNoop>();
+            record[0].MutationCommits[0].MutationEvents[1].EventId.ShouldBe(2);
+            record[0].MutationCommits[0].MutationEvents[1].Mutation.ShouldBeOfType<LicenseReleased>();
         }
 
         public async Task ShouldReplayOnLoad()
         {
-            var connectionSettings = MongoClientSettings.FromConnectionString("mongodb://localhost:27017");
-            var client = new MongoClient(connectionSettings);
-            var database = client.GetDatabase("aggregates");
-            var factory = new AggregateCollectionFactory(database);
-            var repository = new AggregateRepository<License>(factory);
+            await using var context = new MongoDbContext<License>();
 
             var aggregateId = "ShouldReplayOnLoad";
-            var aggregate = await repository.GetLatest(aggregateId);
-            var createdOn = new DateTime(2020, 3, 9, 20, 19, 42, DateTimeKind.Utc);
+            var aggregate = await context.Repository.GetLatest(aggregateId);
+            var createdOn = context.DateTime.UtcNow;
 
             aggregate.Apply(new LicenseNoop());
             await aggregate.Commit();
@@ -175,8 +165,92 @@ namespace MindMatrix.Aggregates.Tests
             aggregate.Apply(new LicenseCreated() { CreatedOn = createdOn });
             await aggregate.Commit();
 
-            aggregate = await repository.GetLatest(aggregateId);
+            aggregate = await context.Repository.GetLatest(aggregateId);
             aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
         }
+
+        public class Counter
+        {
+            public int Count { get; set; }
+        }
+
+        public class Increment : IMutation<Counter>
+        {
+            public int Amount { get; set; }
+            public void Apply(Counter aggregate)
+            {
+                aggregate.Count += Amount;
+            }
+        }
+
+        public async Task Threaded()
+        {
+            var settings = new AggregateSettings() { MaxMutationCommits = 10 };
+            await using var context = new MongoDbContext<Counter>(settings);
+            var aggregateIds = Enumerable.Range(0, 10).Select(x => Guid.NewGuid().ToString()).ToArray();
+            var totals = new int[aggregateIds.Length];
+
+            var tasks = Enumerable.Range(0, 1).Select(xx => Task.Run(async () =>
+            {
+                var r = new Random((xx * 1024 + 1024));
+                var values = new int[aggregateIds.Length];
+
+                for (var i = 0; i < 200; i++)
+                {
+                    var idx = r.Next(0, aggregateIds.Length);
+                    var c = r.Next(1, 5);
+                    var increments = new int[c];
+                    for (var p = 0; p < increments.Length; p++)
+                    {
+                        increments[p] = r.Next(2, 6);
+                        values[idx] += increments[p];
+                    }
+
+                    for (var t = 0; t < 10; t++)
+                    {
+                        try
+                        {
+                            var aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
+                            var count = aggregate.State.Count;
+                            for (var p = 0; p < increments.Length; p++)
+                            {
+                                count += increments[p];
+                                aggregate.Apply(new Increment() { Amount = increments[p] });
+                                aggregate.State.Count.ShouldBe(count);
+                            }
+                            await aggregate.Commit();
+                            aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
+                            try
+                            {
+                                aggregate.State.Count.ShouldBe(count);
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            //await Task.Yield();
+                            break;
+                        }
+                        catch (ConcurrencyException)
+                        {
+
+                        }
+                    }
+                }
+
+                for (var i = 0; i < aggregateIds.Length; i++)
+                    Interlocked.Add(ref totals[i], values[i]);
+            })).ToArray();
+
+            await Task.WhenAll(tasks);
+
+            for (var i = 0; i < aggregateIds.Length; i++)
+            {
+                var aggregate = await context.Repository.GetLatest(aggregateIds[i]);
+                aggregate.State.Count.ShouldBe(totals[i]);
+            }
+        }
+
+        //splitting 0 to 1 is copying the state of the item that caused a split
     }
 }
