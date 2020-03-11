@@ -60,52 +60,33 @@
                         m++;
                     }
 
-                    while (true)
+                    var attempts = int.MaxValue;
+                    while (attempts-- > 0)
                     {
 
                         var aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
-                        var hash = aggregate.GetHashCode();
-                        //Console.WriteLine($"[{xx:X1}] {i:X2} [{hash:X8}] :: [READ] {aggregate}");
                         var amount = 0;
                         var count = aggregate.State.Count;
                         var start = count;
-                        //try
+
+                        for (var p = 0; p < increments.Length; p++)
                         {
-
-                            for (var p = 0; p < increments.Length; p++)
-                            {
-                                count += increments[p];
-                                amount += increments[p];
-                                aggregate.Apply(new Increment() { Amount = increments[p] });
-                                aggregate.State.Count.ShouldBe(count);
-                            }
-                            var result = await aggregate.Commit();
-                            aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
-
-                            // if (aggregate.State.Count != count)
-                            //     Console.WriteLine($"[{xx:X1}] {i:X2} [{hash:X8}] :: *{result} Expected: {count}, Actual: {aggregate.State.Count}, {aggregate}");
-                            // else
-                            //Console.WriteLine($"[{xx:X1}] {i:X2} [{hash:X8}] :: {result} Amount: {amount}, {start} -> {aggregate.State.Count}, {aggregate}");
-                            // try
-                            // {
-                            //     aggregate.State.Count.ShouldBe(count);
-                            // }
-                            // catch (Exception ex)
-                            // {
-                            //     Console.WriteLine($"{aggregateIds[idx]}: {ex.Message}");
-                            //     throw;
-                            // }
-                            await Task.Yield();
-                            //await Task.Delay(Math.Max(i * i * 50, 5000));
-                            if (result.Status != CommitStatus.Concurrency)
-                                break;
-
-                            Interlocked.Increment(ref concurrency);
+                            count += increments[p];
+                            amount += increments[p];
+                            aggregate.Apply(new Increment() { Amount = increments[p] });
+                            aggregate.State.Count.ShouldBe(count);
                         }
-                        // catch (ConcurrencyException)
-                        // {
-                        //     Console.WriteLine($"[{xx:X1}] {i:X2} :: [Concurrency] Tried {start} -> {count} [{amount}], {aggregate}");
-                        // }
+                        try
+                        {
+                            await aggregate.Commit();
+                            break;
+                        }
+                        catch (ConcurrencyException)
+                        {
+                            await Task.Yield();
+                            Interlocked.Increment(ref concurrency);
+                            continue;
+                        }
                     }
                 }
 

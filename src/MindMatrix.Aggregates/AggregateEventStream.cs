@@ -12,32 +12,6 @@ namespace MindMatrix.Aggregates
     using MongoDB.Bson.Serialization.Attributes;
     using MongoDB.Driver;
 
-    public interface IMutation<T>
-    {
-        void Apply(T aggregate);
-    }
-
-    public interface IAggregate<AggregateState>
-        where AggregateState : new()
-    {
-        string AggregateId { get; }
-        long AggregateVersion { get; }
-        long MutationVersion { get; }
-        bool Exists { get; }
-        bool Mutated { get; }
-        DateTime LastMutation { get; }
-        AggregateState State { get; }
-        void Apply<Mutation>(Mutation mutation) where Mutation : IMutation<AggregateState>;
-        Task<CommitStatusResult> Commit(CancellationToken token = default);
-    }
-
-    public interface IAggregateRepository<Aggregate>
-        where Aggregate : new()
-    {
-        //Task Delete(string aggregateId);
-        Task<IAggregate<Aggregate>> GetLatest(string aggregateId);
-    }
-
     public class MutationEvent<Aggregate>
         where Aggregate : new()
     {
@@ -57,11 +31,6 @@ namespace MindMatrix.Aggregates
     {
         public int MaxMutationCommits = 100;
         public int DaysToKeyOldVersions = 100;
-    }
-
-    public interface IDateTime
-    {
-        DateTime UtcNow { get; }
     }
 
     public class CommitStatusResult
@@ -161,13 +130,7 @@ namespace MindMatrix.Aggregates
         private AggregateSettings _settings;
         private IDateTime _dateTime;
 
-        public override string ToString() => $"{{ Id: {AggregateId}, V: {AggregateVersion}, E: {Exists}, C: {LastCommit}, M: {MutationVersion}, S: {State}: H: {this.GetHashCode():X8} }}";
-
-        // public Aggregate(IMongoCollection<Aggregate<AggregateState>> collection)
-        // {
-        //     _collection = collection;
-        //     Mutations = new List<MutationCommit<AggregateState>>();
-        // }
+        public override string ToString() => $"{{ Id: {AggregateId}, V: {AggregateVersion}, E: {Exists}, C: {LastCommit}, M: {MutationVersion}, S: {State} }}";
 
         internal void Initialize(IMongoCollection<Aggregate<AggregateState>> collection, AggregateSettings settings, IDateTime dateTime)
         {
@@ -200,14 +163,19 @@ namespace MindMatrix.Aggregates
                 Mutation = mutation
             });
         }
-
-        public async Task<CommitStatusResult> Commit(CancellationToken token = default)
+        public async Task Commit(bool snapshot = false, CancellationToken token = default)
+        {
+            var result = await CommitInternal(snapshot, token);
+            if (result.Status == CommitStatus.Concurrency)
+                throw new ConcurrencyException(AggregateId, AggregateVersion);
+        }
+        public async Task<CommitStatusResult> CommitInternal(bool snapshot, CancellationToken token)
         {
             if (_newCommit == null)
                 return new CommitStatusResult() { Status = CommitStatus.Noop, LastCommit = LastCommit, NewCommit = LastCommit };
 
             var lastCommit = LastCommit;
-            if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1)
+            if (MutationCommits.Count >= _settings.MaxMutationCommits || _committedVersion == -1 || snapshot)
             {
                 //we need to split to a new version
 
@@ -317,15 +285,6 @@ namespace MindMatrix.Aggregates
 
                 return new CommitStatusResult() { Status = CommitStatus.Updated, LastCommit = lastCommit, NewCommit = LastCommit };
             }
-        }
-    }
-
-    public class ConcurrencyException : Exception
-    {
-        public ConcurrencyException(string aggregateId, long aggregateVersion)
-            : base($"Failed to update aggregate: '{aggregateId}' with version: {aggregateVersion}")
-        {
-
         }
     }
 

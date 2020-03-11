@@ -212,7 +212,8 @@ namespace MindMatrix.Aggregates
                         values[idx] += increments[p];
                     }
 
-                    while (true)
+                    var attempts = int.MaxValue;
+                    while (attempts-- > 0)
                     {
                         var aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
                         var count = aggregate.State.Count;
@@ -222,11 +223,17 @@ namespace MindMatrix.Aggregates
                             aggregate.Apply(new Increment() { Amount = increments[p] });
                             aggregate.State.Count.ShouldBe(count);
                         }
-                        var result = await aggregate.Commit();
-                        if (result.Status != CommitStatus.Concurrency)
+                        try
+                        {
+                            await aggregate.Commit();
                             break;
-                        await Task.Yield();
-                        cc++;
+                        }
+                        catch (ConcurrencyException)
+                        {
+                            await Task.Yield();
+                            cc++;
+                            continue;
+                        }
                     }
                 }
 
