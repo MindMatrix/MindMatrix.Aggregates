@@ -195,7 +195,7 @@ namespace MindMatrix.Aggregates
             var aggregateIds = Enumerable.Range(0, 10).Select(x => Guid.NewGuid().ToString()).ToArray();
             var totals = new int[aggregateIds.Length];
 
-            var tasks = Enumerable.Range(0, 1).Select(xx => Task.Run(async () =>
+            var tasks = Enumerable.Range(0, 16).Select(xx => Task.Run(async () =>
             {
                 var r = new Random((xx * 1024 + 1024));
                 var values = new int[aggregateIds.Length];
@@ -211,35 +211,20 @@ namespace MindMatrix.Aggregates
                         values[idx] += increments[p];
                     }
 
-                    for (var t = 0; t < 10; t++)
+                    while (true)
                     {
-                        try
+                        var aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
+                        var count = aggregate.State.Count;
+                        for (var p = 0; p < increments.Length; p++)
                         {
-                            var aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
-                            var count = aggregate.State.Count;
-                            for (var p = 0; p < increments.Length; p++)
-                            {
-                                count += increments[p];
-                                aggregate.Apply(new Increment() { Amount = increments[p] });
-                                aggregate.State.Count.ShouldBe(count);
-                            }
-                            await aggregate.Commit();
-                            aggregate = await context.Repository.GetLatest(aggregateIds[idx]);
-                            try
-                            {
-                                aggregate.State.Count.ShouldBe(count);
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-                            //await Task.Yield();
+                            count += increments[p];
+                            aggregate.Apply(new Increment() { Amount = increments[p] });
+                            aggregate.State.Count.ShouldBe(count);
+                        }
+                        var result = await aggregate.Commit();
+                        if (result.Status != CommitStatus.Concurrency)
                             break;
-                        }
-                        catch (ConcurrencyException)
-                        {
-
-                        }
+                        await Task.Yield();
                     }
                 }
 
