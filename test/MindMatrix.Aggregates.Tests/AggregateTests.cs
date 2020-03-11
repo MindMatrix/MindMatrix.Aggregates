@@ -188,19 +188,20 @@ namespace MindMatrix.Aggregates
             aggregate.State.ExpiresOn.ShouldBe(createdOn.AddDays(365));
         }
 
-        public async Task Threaded()
+        public async Task Concurrency()
         {
             var settings = new AggregateSettings() { MaxMutationCommits = 10 };
             await using var context = new MongoDbContext<Counter>(settings);
-            var aggregateIds = Enumerable.Range(0, 10).Select(x => Guid.NewGuid().ToString()).ToArray();
+            var aggregateIds = Enumerable.Range(0, 4).Select(x => Guid.NewGuid().ToString()).ToArray();
             var totals = new int[aggregateIds.Length];
-
-            var tasks = Enumerable.Range(0, 16).Select(xx => Task.Run(async () =>
+            var concurrency = 0;
+            var tasks = Enumerable.Range(0, 4).Select(xx => Task.Run(async () =>
             {
                 var r = new Random((xx * 1024 + 1024));
+                var cc = 0;
                 var values = new int[aggregateIds.Length];
 
-                for (var i = 0; i < 200; i++)
+                for (var i = 0; i < 50; i++)
                 {
                     var idx = r.Next(0, aggregateIds.Length);
                     var c = r.Next(1, 5);
@@ -225,11 +226,13 @@ namespace MindMatrix.Aggregates
                         if (result.Status != CommitStatus.Concurrency)
                             break;
                         await Task.Yield();
+                        cc++;
                     }
                 }
 
                 for (var i = 0; i < aggregateIds.Length; i++)
                     Interlocked.Add(ref totals[i], values[i]);
+                Interlocked.Add(ref concurrency, cc);
             })).ToArray();
 
             await Task.WhenAll(tasks);
@@ -239,6 +242,7 @@ namespace MindMatrix.Aggregates
                 var aggregate = await context.Repository.GetLatest(aggregateIds[i]);
                 aggregate.State.Count.ShouldBe(totals[i]);
             }
+            concurrency.ShouldBeGreaterThan(0);
         }
 
         //splitting 0 to 1 is copying the state of the item that caused a split
